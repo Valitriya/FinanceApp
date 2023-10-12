@@ -1,15 +1,15 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import {useTheme} from "@mui/material";
+import FlexBetween from "@/components/FlexBetween";
 
-type Props = {};
 
-const Navbar = (props: Props) => {
+const Navbar = () => {
 	const { palette } = useTheme();
 	return (
-		<Box
-			display="flex"
-			justifyContent="space-between"
-			alignItems="center"
-		></Box>
+		<FlexBetween
+			mb="0.28rem"
+			p="0.5rem 0rem"
+			color={palette.grey[300]}
+		></FlexBetween>
 	);
 };
 
