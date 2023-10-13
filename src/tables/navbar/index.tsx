@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { useTheme } from "@mui/material";
-import { Typography, Box } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Typography, useTheme } from "@mui/material";
 import FlexBetween from "@/components/FlexBetween";
 import PixIcon from "@mui/icons-material/Pix";
+import NavigationItem from "@/components/NavigationItem";
 
 const Navbar = () => {
 	const { palette } = useTheme();
-	const [selected, setSelected] = useState("dashboard");
+	const [selected, setSelected] = useState<string>("dashboard");
 	return (
 		<FlexBetween mb="0.28rem" p="0.5rem 0rem" color={palette.grey[300]}>
 			<FlexBetween gap="0.72rem">
@@ -17,30 +16,18 @@ const Navbar = () => {
 				</Typography>
 			</FlexBetween>
 			<FlexBetween gap="2rem">
-				<Box sx={{ "&:hover": { color: palette.primary[100] } }}>
-					<Link
-						to="/"
-						onClick={() => setSelected("dashboard")}
-						style={{
-							color: selected === "dashboard" ? "inherit" : palette.grey[700],
-							textDecoration: "inherit"
-						}}
-					>
-						DashBoard
-					</Link>
-				</Box>
-				<Box sx={{ "&:hover": { color: palette.primary[100] } }}>
-					<Link
-						to="/"
-						onClick={() => setSelected("Predictions")}
-						style={{
-							color: selected === "Predictions" ? "inherit" : palette.grey[700],
-							textDecoration: "inherit"
-						}}
-					>
-						Predictions
-					</Link>
-				</Box>
+				<NavigationItem
+					to="/"
+					label="DashBoard"
+					selected={selected}
+					onClick={setSelected}
+				></NavigationItem>
+				<NavigationItem
+					to="/"
+					label="Predictions"
+					selected={selected}
+					onClick={setSelected}
+				></NavigationItem>
 			</FlexBetween>
 		</FlexBetween>
 	);
