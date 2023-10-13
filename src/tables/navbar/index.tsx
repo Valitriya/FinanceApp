@@ -1,15 +1,21 @@
-import {useTheme} from "@mui/material";
+import { useState } from "react";
+import { useTheme } from "@mui/material";
+import { Typography } from "@mui/material";
 import FlexBetween from "@/components/FlexBetween";
-
+import PixIcon from "@mui/icons-material/Pix";
 
 const Navbar = () => {
 	const { palette } = useTheme();
+	const  [selected, setSelected] = useState("dashboard");
 	return (
-		<FlexBetween
-			mb="0.28rem"
-			p="0.5rem 0rem"
-			color={palette.grey[300]}
-		></FlexBetween>
+		<FlexBetween mb="0.28rem" p="0.5rem 0rem" color={palette.grey[300]}>
+			<FlexBetween gap="0.72rem">
+				<PixIcon sx={{ fontSize: "30px" }} />
+				<Typography variant="h4" fontSize="18px">
+					Finanseer
+				</Typography>
+			</FlexBetween>
+		</FlexBetween>
 	);
 };
 
