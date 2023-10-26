@@ -13,7 +13,18 @@ import {
 const Row_1 = () => {
 	const { data } = useGetKpisQuery();
 	console.log("data:", data);
-	
+	const revenueExpenses = useMemo(() => {
+		return (
+			data &&
+			data[0].monthlyData.map(({ month, revenue, expenses }) => {
+				return {
+					name: month.substring(0, 3),
+					revenue,
+					expenses,
+				};
+			})
+		);
+	}, [data]);
 	const gradientOffset = () => {
 		const dataMax = Math.max(...data.map((i) => i.uv));
 		const dataMin = Math.min(...data.map((i) => i.uv));
