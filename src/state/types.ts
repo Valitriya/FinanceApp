@@ -3,7 +3,14 @@ export interface ExpansesByCategory {
     supplies: number;
     services: number;
 }
-
+export interface Month{
+    id: string;
+    month: string;
+    revenue: number;
+    expenses: number;
+    nonOperationalExpenses: number;
+    operationalExpenses: number;
+}
 export interface GetKpisResponse{
     id: string;
     __id: string;
@@ -12,4 +19,5 @@ export interface GetKpisResponse{
     totalRevenue: number;
     totalExpenses: number;
     expensesByCategory: ExpansesByCategory;
+    monthlyData: Array<Month>;
 }
