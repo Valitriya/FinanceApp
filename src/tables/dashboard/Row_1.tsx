@@ -13,6 +13,22 @@ import {
 const Row_1 = () => {
 	const { data } = useGetKpisQuery();
 	console.log("data:", data);
+	
+	const gradientOffset = () => {
+		const dataMax = Math.max(...data.map((i) => i.uv));
+		const dataMin = Math.min(...data.map((i) => i.uv));
+
+		if (dataMax <= 0) {
+			return 0;
+		}
+		if (dataMin >= 0) {
+			return 1;
+		}
+
+		return dataMax / (dataMax - dataMin);
+	};
+
+	const off = gradientOffset();
 	return (
 		<>
 			<DashboardBox gridArea="a">
