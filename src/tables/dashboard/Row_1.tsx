@@ -103,10 +103,11 @@ const Row_1 = () => {
 						</defs>
 						<Area
 							type="monotone"
-							dataKey="expenses"
-							stroke={palette.secondary.dark}
+							dataKey="revenue"
+							dot={true}
+							stroke={palette.primary.main}
 							fillOpacity={1}
-							fill="url(#colorExpenses)"
+							fill="url(#colorRevenue)"
 						/>
 						<Area
 							type="monotone"
