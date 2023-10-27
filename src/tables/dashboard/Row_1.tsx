@@ -1,6 +1,6 @@
 import DashboardBox from "@/components/DashboardBox";
 import { useGetKpisQuery } from "@/state/api";
-import {useMemo} from "react"
+import { useMemo } from "react";
 import {
 	ResponsiveContainer,
 	AreaChart,
@@ -10,8 +10,10 @@ import {
 	Tooltip,
 	Area,
 } from "recharts";
+import { useTheme } from "@mui/material";
 
 const Row_1 = () => {
+	const { palette } = useTheme();
 	const { data } = useGetKpisQuery();
 	console.log("data:", data);
 	const revenueExpenses = useMemo(() => {
@@ -27,8 +29,8 @@ const Row_1 = () => {
 		);
 	}, [data]);
 	const gradientOffset = () => {
-		const dataMax = Math.max(...data.map((i) => i.uv));
-		const dataMin = Math.min(...data.map((i) => i.uv));
+		const dataMax = Math.max(...revenueExpenses.map((i) => i.revenue));
+		const dataMin = Math.min(...revenueExpenses.map((i) => i.revenue));
 
 		if (dataMax <= 0) {
 			return 0;
@@ -48,7 +50,7 @@ const Row_1 = () => {
 					<AreaChart
 						width={500}
 						height={400}
-						data={data}
+						data={revenueExpenses}
 						margin={{
 							top: 10,
 							right: 30,
@@ -57,20 +59,38 @@ const Row_1 = () => {
 						}}
 					>
 						<CartesianGrid strokeDasharray="3 3" />
-						<XAxis dataKey="name" />
-						<YAxis />
+						<XAxis
+							dataKey="name"
+							tickLine={false}
+							style={{ fontSize: "10px" }}
+						/>
+						<YAxis
+							tickLine={false}
+							axisLine={{ strokeWidth: "0" }}
+							style={{ fontSize: "10px" }}
+							domain={[8000, 23000]}
+						/>
 						<Tooltip />
 						<defs>
 							<linearGradient id="splitColor" x1="0" y1="0" x2="0" y2="1">
-								<stop offset={off} stopColor="green" stopOpacity={1} />
-								<stop offset={off} stopColor="red" stopOpacity={1} />
+								<stop
+									offset={off}
+									stopColor={palette.primary.light}
+									stopOpacity={1}
+								/>
+								<stop
+									offset={off}
+									stopColor={palette.secondary.dark}
+									stopOpacity={1}
+								/>
 							</linearGradient>
 						</defs>
 						<Area
 							type="monotone"
-							dataKey="uv"
-							stroke="#000"
-							fill="url(#splitColor)"
+							dataKey="expenses"
+							stroke={palette.secondary.dark}
+							fillOpacity={1}
+							fill="url(#colorExpenses)"
 						/>
 					</AreaChart>
 				</ResponsiveContainer>
