@@ -34,20 +34,7 @@ const Row_1 = () => {
 		});
 	}, [data]);
 
-	const gradientOffset = () => {
-		const dataMax = Math.max(...revenueExpenses.map((i) => i.revenue));
-		const dataMin = Math.min(...revenueExpenses.map((i) => i.revenue));
-
-		if (dataMax <= 0) {
-			return 0;
-		}
-		if (dataMin >= 0) {
-			return 1;
-		}
-
-		return dataMax / (dataMax - dataMin);
-	};
-
+	
 	return (
 		<>
 			<DashboardBox gridArea="a">
@@ -55,10 +42,10 @@ const Row_1 = () => {
 					<AreaChart
 						data={revenueExpenses}
 						margin={{
-							top: 10,
-							right: 30,
-							left: 0,
-							bottom: 0,
+							top: 40,
+							right: 25,
+							left: -10,
+							bottom: 30,
 						}}
 					>
 						<CartesianGrid strokeDasharray="3 3" />
