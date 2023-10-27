@@ -15,10 +15,17 @@ import { useTheme } from "@mui/material";
 const Row_1 = () => {
 	const { palette } = useTheme();
 	const { data } = useGetKpisQuery();
-	console.log("data:", data);
+
 	const revenueExpenses = useMemo(() => {
+		if (
+			!data ||
+			!Array.isArray(data) ||
+			data.length === 0 ||
+			!Array.isArray(data[0].monthlyData)
+		) {
+			return [];
+		}
 		return (
-			data &&
 			data[0].monthlyData.map(({ month, revenue, expenses }) => {
 				return {
 					name: month.substring(0, 3),
@@ -28,6 +35,7 @@ const Row_1 = () => {
 			})
 		);
 	}, [data]);
+	
 	const gradientOffset = () => {
 		const dataMax = Math.max(...revenueExpenses.map((i) => i.revenue));
 		const dataMin = Math.min(...revenueExpenses.map((i) => i.revenue));
