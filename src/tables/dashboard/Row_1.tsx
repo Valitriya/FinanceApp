@@ -76,7 +76,7 @@ const Row_1 = () => {
 						/>
 						<Tooltip />
 						<defs>
-							<linearGradient id="splitColor" x1="0" y1="0" x2="0" y2="1">
+							<linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
 								<stop
 									offset={off}
 									stopColor={palette.primary.light}
@@ -85,6 +85,18 @@ const Row_1 = () => {
 								<stop
 									offset={off}
 									stopColor={palette.secondary.dark}
+									stopOpacity={1}
+								/>
+							</linearGradient>
+							<linearGradient id="colorExpenses" x1="0" y1="0" x2="0" y2="1">
+								<stop
+									offset={off}
+									stopColor={palette.primary.dark}
+									stopOpacity={1}
+								/>
+								<stop
+									offset={off}
+									stopColor={palette.secondary.main}
 									stopOpacity={1}
 								/>
 							</linearGradient>
