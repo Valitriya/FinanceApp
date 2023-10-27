@@ -17,24 +17,15 @@ const Row_1 = () => {
 	const { data } = useGetKpisQuery();
 
 	const revenueExpenses = useMemo(() => {
-		if (
-			!data ||
-			!Array.isArray(data) ||
-			data.length === 0 ||
-			!Array.isArray(data[0].monthlyData)
-		) {
-			return [];
-		}
-		return data[0].monthlyData.map(({ month, revenue, expenses }) => {
-			return {
-				name: month.substring(0, 3),
-				revenue,
-				expenses,
-			};
-		});
+		if (!data || !Array.isArray(data[0]?.monthlyData)) return [];
+
+		return data[0].monthlyData.map(({ month, revenue, expenses }) => ({
+			name: month.substring(0, 3),
+			revenue,
+			expenses,
+		}));
 	}, [data]);
 
-	
 	return (
 		<>
 			<DashboardBox gridArea="a">
@@ -64,7 +55,7 @@ const Row_1 = () => {
 						<defs>
 							<linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
 								<stop
-									offset='5%'
+									offset="5%"
 									stopColor={palette.primary[500]}
 									stopOpacity={0.3}
 								/>
@@ -76,7 +67,7 @@ const Row_1 = () => {
 							</linearGradient>
 							<linearGradient id="colorExpenses" x1="0" y1="0" x2="0" y2="1">
 								<stop
-									offset='5%'
+									offset="5%"
 									stopColor={palette.secondary[400]}
 									stopOpacity={0.2}
 								/>
