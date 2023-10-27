@@ -25,17 +25,15 @@ const Row_1 = () => {
 		) {
 			return [];
 		}
-		return (
-			data[0].monthlyData.map(({ month, revenue, expenses }) => {
-				return {
-					name: month.substring(0, 3),
-					revenue,
-					expenses,
-				};
-			})
-		);
+		return data[0].monthlyData.map(({ month, revenue, expenses }) => {
+			return {
+				name: month.substring(0, 3),
+				revenue,
+				expenses,
+			};
+		});
 	}, [data]);
-	
+
 	const gradientOffset = () => {
 		const dataMax = Math.max(...revenueExpenses.map((i) => i.revenue));
 		const dataMin = Math.min(...revenueExpenses.map((i) => i.revenue));
@@ -56,8 +54,6 @@ const Row_1 = () => {
 			<DashboardBox gridArea="a">
 				<ResponsiveContainer width="100%" height="100%">
 					<AreaChart
-						width={500}
-						height={400}
 						data={revenueExpenses}
 						margin={{
 							top: 10,
@@ -96,6 +92,14 @@ const Row_1 = () => {
 						<Area
 							type="monotone"
 							dataKey="expenses"
+							stroke={palette.secondary.dark}
+							fillOpacity={1}
+							fill="url(#colorExpenses)"
+						/>
+						<Area
+							type="monotone"
+							dataKey="expenses"
+							dot={true}
 							stroke={palette.secondary.dark}
 							fillOpacity={1}
 							fill="url(#colorExpenses)"
