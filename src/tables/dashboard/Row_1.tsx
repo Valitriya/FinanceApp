@@ -48,7 +48,6 @@ const Row_1 = () => {
 		return dataMax / (dataMax - dataMin);
 	};
 
-	const off = gradientOffset();
 	return (
 		<>
 			<DashboardBox gridArea="a">
@@ -78,26 +77,26 @@ const Row_1 = () => {
 						<defs>
 							<linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
 								<stop
-									offset={off}
-									stopColor={palette.primary.light}
-									stopOpacity={1}
+									offset='5%'
+									stopColor={palette.primary[500]}
+									stopOpacity={0.3}
 								/>
 								<stop
-									offset={off}
-									stopColor={palette.secondary.dark}
-									stopOpacity={1}
+									offset="95%"
+									stopColor={palette.primary[300]}
+									stopOpacity={0}
 								/>
 							</linearGradient>
 							<linearGradient id="colorExpenses" x1="0" y1="0" x2="0" y2="1">
 								<stop
-									offset={off}
-									stopColor={palette.primary.dark}
-									stopOpacity={1}
+									offset='5%'
+									stopColor={palette.secondary[400]}
+									stopOpacity={0.2}
 								/>
 								<stop
-									offset={off}
-									stopColor={palette.secondary.main}
-									stopOpacity={1}
+									offset="95%"
+									stopColor={palette.secondary[500]}
+									stopOpacity={0.8}
 								/>
 							</linearGradient>
 						</defs>
