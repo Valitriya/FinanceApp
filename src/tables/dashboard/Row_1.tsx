@@ -11,6 +11,7 @@ import {
 	Area,
 } from "recharts";
 import { useTheme } from "@mui/material";
+import BoxHeader from "@/components/BoxHeader";
 
 const Row_1 = () => {
 	const { palette } = useTheme();
@@ -27,6 +28,7 @@ const Row_1 = () => {
 	const EXPENSES_COLOR_TOP = palette.secondary[500];
 	const REVENUE_COLOR_DOWN = palette.primary[400];
 	const EXPENSES_COLOR_DOWN = palette.secondary[300];
+	const COLOR_FONT = palette.grey[800]
 
 	const revenueExpenses = useMemo(() => {
 		if (!data || !Array.isArray(data[0]?.monthlyData)) return [];
@@ -41,26 +43,31 @@ const Row_1 = () => {
 	return (
 		<>
 			<DashboardBox gridArea="a">
+				<BoxHeader
+					title="Revenue and Expenses"
+					subtitle="top line represents revenue, bottom line represents expenses"
+					sideText="+4%"
+				/>
 				<ResponsiveContainer width="100%" height="100%">
 					<AreaChart
 						data={revenueExpenses}
 						margin={{
-							top: 40,
+							top: 20,
 							right: 25,
-							left: -10,
-							bottom: 30,
+							left: -5,
+							bottom: 80,
 						}}
 					>
 						<CartesianGrid strokeDasharray="3 3" />
 						<XAxis
 							dataKey="name"
 							tickLine={false}
-							style={{ fontSize: "10px" }}
+							style={{ fontSize: "10px", fill: COLOR_FONT}}
 						/>
 						<YAxis
 							tickLine={false}
 							axisLine={{ strokeWidth: "0" }}
-							style={{ fontSize: "10px" }}
+							style={{ fontSize: "10px", fill: COLOR_FONT}}
 							domain={MONTHLY_DATA_DOMAIN}
 						/>
 						<Tooltip />
