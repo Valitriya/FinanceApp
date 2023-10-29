@@ -1,19 +1,24 @@
-import {Box, Typography, useTheme} from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import FlexBetween from "./FlexBetween";
 type Props = {
-  title: string;
-  icon?: React.ReactNode;
-}
+	title: string;
+	icon?: React.ReactNode;
+};
 
-const BoxHeader = ({title, icon}) => {
-  const {palette} = useTheme();
-  return (
-    <FlexBetween color={palette.grey[400]} margin="1.5rem 1rem 0 1rem">
-      <FlexBetween>
-      
-      </FlexBetween>
-    </FlexBetween>
-  )
-}
+const BoxHeader = ({ title, icon }) => {
+	const { palette } = useTheme();
+	return (
+		<FlexBetween color={palette.grey[400]} margin="1.5rem 1rem 0 1rem">
+			<FlexBetween>
+				{icon}
+				<Box width="100%">
+					<Typography variant="h4" mb="-0.1rem">
+						{title}
+					</Typography>
+				</Box>
+			</FlexBetween>
+		</FlexBetween>
+	);
+};
 
-export default BoxHeader
+export default BoxHeader;
