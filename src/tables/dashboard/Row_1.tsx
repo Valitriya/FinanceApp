@@ -171,11 +171,20 @@ const Row_1 = () => {
 						<Legend />
 						<Line
 							type="monotone"
-							dataKey="pv"
-							stroke="#8884d8"
-							dot={<CustomizedDot />}
+							dataKey="revenue"
+							dot={true}
+							stroke={COLORS_STROKE.PRIMARY}
+							fillOpacity={1}
+							fill="url(#colorRevenue)"
 						/>
-						<Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+						<Line
+							type="monotone"
+							dataKey="expenses"
+							dot={true}
+							stroke={COLORS_STROKE.SECONDARY}
+							fillOpacity={1}
+							fill="url(#colorExpenses)"
+						/>
 					</LineChart>
 				</ResponsiveContainer>
 			</DashboardBox>
