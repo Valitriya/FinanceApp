@@ -154,10 +154,10 @@ const Row_1 = () => {
 					<LineChart
 						data={revenueProfit}
 						margin={{
-							top: 5,
-							right: 30,
-							left: 20,
-							bottom: 5,
+							top: 20,
+							right: 0,
+							left: -20,
+							bottom: 55,
 						}}
 					>
 						<CartesianGrid
