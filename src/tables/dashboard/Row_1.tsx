@@ -186,7 +186,9 @@ const Row_1 = () => {
 							style={{ fontSize: "10px", fill: COLOR_FONT }}
 						/>
 						<Tooltip />
-						<Legend />
+						<Legend height={20} wrapperStyle={{
+							margin: '0 0 10px 0'
+						}}/>
 						<Line
 							yAxisId="left"
 							type="monotone"
