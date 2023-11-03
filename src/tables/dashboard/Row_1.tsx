@@ -42,6 +42,17 @@ const Row_1 = () => {
 			expenses,
 		}));
 	}, [data]);
+
+	const revenueProfit = useMemo(() => {
+		if (!data || !Array.isArray(data[0]?.monthlyData)) return [];
+
+		return data[0].monthlyData.map(({ month, revenue, expenses }) => ({
+			name: month.substring(0, 3),
+			revenue,
+			profit: revenue - expenses,
+		}));
+	}, [data]);
+
 	const CustomizedDot = (props) => {
 		const { cx, cy, stroke, payload, value } = props;
 
@@ -150,6 +161,11 @@ const Row_1 = () => {
 				</ResponsiveContainer>
 			</DashboardBox>
 			<DashboardBox gridArea="b">
+				<BoxHeader
+					title="Profit and Revenue"
+					subtitle="top line represents revenue, bottom line represents expenses"
+					sideText="+4%"
+				/>
 				<ResponsiveContainer width="100%" height="100%">
 					<LineChart
 						data={revenueProfit}
@@ -184,9 +200,12 @@ const Row_1 = () => {
 							style={{ fontSize: "10px", fill: COLOR_FONT }}
 						/>
 						<Tooltip />
-						<Legend height={20} wrapperStyle={{
-							margin: '0 0 10px 0'
-						}}/>
+						<Legend
+							height={20}
+							wrapperStyle={{
+								margin: "0 0 10px 0",
+							}}
+						/>
 						<Line
 							yAxisId="left"
 							type="monotone"
