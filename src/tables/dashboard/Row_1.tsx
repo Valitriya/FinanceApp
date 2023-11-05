@@ -229,12 +229,12 @@ const Row_1 = () => {
 							dataKey="name"
 							axisLine={false}
 							tickLine={false}
-							style={{ fontSize: "10px" }}
+							style={{ fontSize: "10px", fill: COLOR_FONT}}
 						/>
 						<YAxis
 							axisLine={false}
 							tickLine={false}
-							style={{ fontSize: "10px" }}
+							style={{ fontSize: "10px", fill: COLOR_FONT}}
 						/>
 						<Tooltip />
 						<Bar dataKey="revenue" fill="url(#colorRevenue)" />
