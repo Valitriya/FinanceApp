@@ -210,13 +210,13 @@ const Row_1 = () => {
 							yAxisId="left"
 							type="monotone"
 							dataKey="profit"
-							stroke={COLORS_STROKE.SECONDARY}
+							stroke={palette.tertiary[500]}
 						/>
 						<Line
 							yAxisId="right"
 							type="monotone"
 							dataKey="revenue"
-							stroke={COLORS_STROKE.SECONDARY}
+							stroke={REVENUE_COLOR_TOP}
 						/>
 					</LineChart>
 				</ResponsiveContainer>
