@@ -186,11 +186,11 @@ const Row_1 = () => {
 			</DashboardBox>
 			<DashboardBox gridArea="c">
 				<ResponsiveContainer width="100%" height="100%">
-				<BoxHeader
-					title="Revenue Month by Month"
-					subtitle="graph representing the revenue month by month"
-					sideText="+4%"
-				/>
+					<BoxHeader
+						title="Revenue Month by Month"
+						subtitle="graph representing the revenue month by month"
+						sideText="+4%"
+					/>
 					<BarChart
 						width={500}
 						height={300}
@@ -202,8 +202,13 @@ const Row_1 = () => {
 							bottom: 5,
 						}}
 					>
-						<CartesianGrid vertical={false} stroke={COLOR_FONT}/>
-						<XAxis dataKey="name" />
+						<CartesianGrid vertical={false} stroke={COLOR_FONT} />
+						<XAxis
+							dataKey="name"
+							axisLine={false}
+							tickLine={false}
+							style={{ fontSize: "10px" }}
+						/>
 						<YAxis />
 						<Tooltip />
 						<Legend />
