@@ -36,25 +36,11 @@ const Row_1 = () => {
 	const revenueExpenses = useMemo(() => generateMonthlyData(data, (revenue, expenses) => ({
 		revenue, expenses
 	})), [data]);
-	// const revenueExpenses = useMemo(() => {
-	// 	if (!data || !Array.isArray(data[0]?.monthlyData)) return [];
 
-	// 	return data[0].monthlyData.map(({ month, revenue, expenses }) => ({
-	// 		name: month.substring(0, 3),
-	// 		revenue,
-	// 		expenses,
-	// 	}));
-	// }, [data]);
-
-	const revenueProfit = useMemo(() => {
-		if (!data || !Array.isArray(data[0]?.monthlyData)) return [];
-
-		return data[0].monthlyData.map(({ month, revenue, expenses }) => ({
-			name: month.substring(0, 3),
-			revenue,
-			profit: (revenue - expenses).toFixed(2),
-		}));
-	}, [data]);
+	const revenueProfit = useMemo(() => generateMonthlyData(data, (revenue, expenses) => ({
+		revenue,
+		profit: (revenue - expenses).toFixed(2),
+	})), [data])
 
 	const revenue = useMemo(() => {
 		if (!data || !Array.isArray(data[0]?.monthlyData)) return [];
