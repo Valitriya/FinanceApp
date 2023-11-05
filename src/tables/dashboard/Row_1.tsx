@@ -3,6 +3,7 @@ import { useGetKpisQuery } from "@/state/api";
 import { useTheme } from "@mui/material";
 import DashboardBox from "@/components/DashboardBox";
 import BoxHeader from "@/components/BoxHeader";
+import {GetKpisResponse } from "@/state/types";
 import {
 	ResponsiveContainer,
 	AreaChart,
@@ -18,7 +19,7 @@ import {
 	Bar,
 } from "recharts";
 
-const generateMonthlyData = (data, mapFunction) => {
+const generateMonthlyData = (data: GetKpisResponse | undefined, mapFunction) => {
 	if(!data || !Array.isArray(data[0]?.monthlyData)) return [];
 	return data[0].monthlyData.map(({month, revenue, expenses}) => ({
 		name: month.substring(0, 3),
