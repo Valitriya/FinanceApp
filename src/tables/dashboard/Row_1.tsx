@@ -194,7 +194,7 @@ const Row_1 = () => {
 					<BarChart
 						width={500}
 						height={300}
-						data={data}
+						data={revenue}
 						margin={{
 							top: 5,
 							right: 30,
@@ -202,7 +202,7 @@ const Row_1 = () => {
 							bottom: 5,
 						}}
 					>
-						<CartesianGrid strokeDasharray="3 3" />
+						<CartesianGrid vertical={false} stroke={COLOR_FONT}/>
 						<XAxis dataKey="name" />
 						<YAxis />
 						<Tooltip />
