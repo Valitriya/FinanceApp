@@ -204,10 +204,10 @@ const Row_1 = () => {
 						height={300}
 						data={revenue}
 						margin={{
-							top: 5,
-							right: 30,
-							left: 20,
-							bottom: 5,
+							top: 20,
+							right: 25,
+							left: -5,
+							bottom: 80,
 						}}
 					>
 						<defs>
