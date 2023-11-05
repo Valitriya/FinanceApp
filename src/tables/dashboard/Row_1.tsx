@@ -21,7 +21,7 @@ const Row_1 = () => {
 	const { data } = useGetKpisQuery();
 
 	const MONTHLY_DATA_DOMAIN = [8000, 23000];
-	
+
 	const COLOR_FONT = palette.grey[800];
 
 	const revenueExpenses = useMemo(() => {
@@ -131,9 +131,9 @@ const Row_1 = () => {
 						data={revenueProfit}
 						margin={{
 							top: 20,
-							right: 0,
-							left: -20,
-							bottom: 55,
+							right: 5,
+							left: -5,
+							bottom: 60,
 						}}
 					>
 						<CartesianGrid
