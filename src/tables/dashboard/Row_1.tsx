@@ -211,12 +211,14 @@ const Row_1 = () => {
 							type="monotone"
 							dataKey="profit"
 							stroke={palette.tertiary[500]}
+							dot={<CustomizedDot />}
 						/>
 						<Line
 							yAxisId="right"
 							type="monotone"
 							dataKey="revenue"
 							stroke={REVENUE_COLOR_TOP}
+							dot={<CustomizedDot />}
 						/>
 					</LineChart>
 				</ResponsiveContainer>
