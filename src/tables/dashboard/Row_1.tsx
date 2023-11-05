@@ -215,16 +215,10 @@ const Row_1 = () => {
 							style={{ fontSize: "10px" }}
 						/>
 						<Tooltip />
-						<Legend />
 						<Bar
-							dataKey="pv"
+							dataKey="revenue"
 							fill="#8884d8"
 							activeBar={<Rectangle fill="pink" stroke="blue" />}
-						/>
-						<Bar
-							dataKey="uv"
-							fill="#82ca9d"
-							activeBar={<Rectangle fill="gold" stroke="purple" />}
 						/>
 					</BarChart>
 				</ResponsiveContainer>
