@@ -202,6 +202,20 @@ const Row_1 = () => {
 							bottom: 5,
 						}}
 					>
+						<defs>
+							<linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
+								<stop
+									offset="5%"
+									stopColor={palette.primary[500]}
+									stopOpacity={0.8}
+								/>
+								<stop
+									offset="95%"
+									stopColor={palette.primary[400]}
+									stopOpacity={0}
+								/>
+							</linearGradient>
+						</defs>
 						<CartesianGrid vertical={false} stroke={COLOR_FONT} />
 						<XAxis
 							dataKey="name"
@@ -217,8 +231,7 @@ const Row_1 = () => {
 						<Tooltip />
 						<Bar
 							dataKey="revenue"
-							fill="#8884d8"
-							activeBar={<Rectangle fill="pink" stroke="blue" />}
+							fill="url(#colorRevenue)"
 						/>
 					</BarChart>
 				</ResponsiveContainer>
