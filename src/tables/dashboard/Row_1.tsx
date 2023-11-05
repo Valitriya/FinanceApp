@@ -209,7 +209,11 @@ const Row_1 = () => {
 							tickLine={false}
 							style={{ fontSize: "10px" }}
 						/>
-						<YAxis />
+						<YAxis
+							axisLine={false}
+							tickLine={false}
+							style={{ fontSize: "10px" }}
+						/>
 						<Tooltip />
 						<Legend />
 						<Bar
