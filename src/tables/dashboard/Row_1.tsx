@@ -18,6 +18,13 @@ import {
 	Bar,
 } from "recharts";
 
+const generateMonthlyData = (data, mapFunction) => {
+	if(!data || !Array.isArray(data[0]?.monthlyData)) return [];
+	return data[0].monthlyData.map(({month, revenue, expenses}) => ({
+		name: month.substring(0, 3),
+		...mapFunction(revenue, expenses),
+	}))
+}
 const Row_1 = () => {
 	const { palette } = useTheme();
 	const { data } = useGetKpisQuery();
