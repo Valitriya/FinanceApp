@@ -21,16 +21,7 @@ const Row_1 = () => {
 	const { data } = useGetKpisQuery();
 
 	const MONTHLY_DATA_DOMAIN = [8000, 23000];
-
-	const COLORS_STROKE = {
-		PRIMARY: palette.primary.main,
-		SECONDARY: palette.secondary.dark,
-	};
-
-	const REVENUE_COLOR_TOP = palette.primary[500];
-	const EXPENSES_COLOR_TOP = palette.secondary[500];
-	const REVENUE_COLOR_DOWN = palette.primary[400];
-	const EXPENSES_COLOR_DOWN = palette.secondary[300];
+	
 	const COLOR_FONT = palette.grey[800];
 
 	const revenueExpenses = useMemo(() => {
@@ -88,24 +79,24 @@ const Row_1 = () => {
 							<linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
 								<stop
 									offset="5%"
-									stopColor={REVENUE_COLOR_TOP}
+									stopColor={palette.primary[500]}
 									stopOpacity={0.3}
 								/>
 								<stop
 									offset="95%"
-									stopColor={REVENUE_COLOR_DOWN}
+									stopColor={palette.primary[400]}
 									stopOpacity={0}
 								/>
 							</linearGradient>
 							<linearGradient id="colorExpenses" x1="0" y1="0" x2="0" y2="1">
 								<stop
 									offset="5%"
-									stopColor={EXPENSES_COLOR_DOWN}
+									stopColor={palette.secondary[300]}
 									stopOpacity={0.2}
 								/>
 								<stop
 									offset="95%"
-									stopColor={EXPENSES_COLOR_TOP}
+									stopColor={palette.secondary[500]}
 									stopOpacity={0.8}
 								/>
 							</linearGradient>
@@ -114,7 +105,7 @@ const Row_1 = () => {
 							type="monotone"
 							dataKey="revenue"
 							dot={true}
-							stroke={COLORS_STROKE.PRIMARY}
+							stroke={palette.primary.main}
 							fillOpacity={1}
 							fill="url(#colorRevenue)"
 						/>
@@ -122,7 +113,7 @@ const Row_1 = () => {
 							type="monotone"
 							dataKey="expenses"
 							dot={true}
-							stroke={COLORS_STROKE.SECONDARY}
+							stroke={palette.secondary.dark}
 							fillOpacity={1}
 							fill="url(#colorExpenses)"
 						/>
@@ -185,7 +176,7 @@ const Row_1 = () => {
 							yAxisId="right"
 							type="monotone"
 							dataKey="revenue"
-							stroke={REVENUE_COLOR_TOP}
+							stroke={palette.primary[500]}
 						/>
 					</LineChart>
 				</ResponsiveContainer>
