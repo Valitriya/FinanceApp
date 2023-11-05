@@ -16,7 +16,6 @@ import {
 	Line,
 	BarChart,
 	Bar,
-	Rectangle,
 } from "recharts";
 
 const Row_1 = () => {
@@ -44,6 +43,15 @@ const Row_1 = () => {
 			name: month.substring(0, 3),
 			revenue,
 			profit: (revenue - expenses).toFixed(2),
+		}));
+	}, [data]);
+
+	const revenue = useMemo(() => {
+		if (!data || !Array.isArray(data[0]?.monthlyData)) return [];
+
+		return data[0].monthlyData.map(({ month, revenue}) => ({
+			name: month.substring(0, 3),
+			revenue,
 		}));
 	}, [data]);
 
