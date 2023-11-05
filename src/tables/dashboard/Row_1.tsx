@@ -33,15 +33,18 @@ const Row_1 = () => {
 
 	const COLOR_FONT = palette.grey[800];
 
-	const revenueExpenses = useMemo(() => {
-		if (!data || !Array.isArray(data[0]?.monthlyData)) return [];
+	const revenueExpenses = useMemo(() => generateMonthlyData(data, (revenue, expenses) => ({
+		revenue, expenses
+	})), [data]);
+	// const revenueExpenses = useMemo(() => {
+	// 	if (!data || !Array.isArray(data[0]?.monthlyData)) return [];
 
-		return data[0].monthlyData.map(({ month, revenue, expenses }) => ({
-			name: month.substring(0, 3),
-			revenue,
-			expenses,
-		}));
-	}, [data]);
+	// 	return data[0].monthlyData.map(({ month, revenue, expenses }) => ({
+	// 		name: month.substring(0, 3),
+	// 		revenue,
+	// 		expenses,
+	// 	}));
+	// }, [data]);
 
 	const revenueProfit = useMemo(() => {
 		if (!data || !Array.isArray(data[0]?.monthlyData)) return [];
