@@ -211,16 +211,16 @@ const Row_1 = () => {
 						}}
 					>
 						<defs>
-							<linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
+							<linearGradient id="colorRevenueM" x1="0" y1="0" x2="0" y2="1">
 								<stop
 									offset="5%"
-									stopColor={palette.primary[500]}
+									stopColor={palette.primary[300]}
 									stopOpacity={0.8}
 								/>
 								<stop
 									offset="95%"
-									stopColor={palette.primary[400]}
-									stopOpacity={0}
+									stopColor={palette.primary[700]}
+									stopOpacity={1}
 								/>
 							</linearGradient>
 						</defs>
@@ -229,15 +229,15 @@ const Row_1 = () => {
 							dataKey="name"
 							axisLine={false}
 							tickLine={false}
-							style={{ fontSize: "10px", fill: COLOR_FONT}}
+							style={{ fontSize: "10px", fill: COLOR_FONT }}
 						/>
 						<YAxis
 							axisLine={false}
 							tickLine={false}
-							style={{ fontSize: "10px", fill: COLOR_FONT}}
+							style={{ fontSize: "10px", fill: COLOR_FONT }}
 						/>
 						<Tooltip />
-						<Bar dataKey="revenue" fill="url(#colorRevenue)" />
+						<Bar dataKey="revenue" fill="url(#colorRevenueM)" />
 					</BarChart>
 				</ResponsiveContainer>
 			</DashboardBox>
