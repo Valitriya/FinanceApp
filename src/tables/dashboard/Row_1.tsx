@@ -42,15 +42,9 @@ const Row_1 = () => {
 		profit: (revenue - expenses).toFixed(2),
 	})), [data])
 
-	const revenue = useMemo(() => {
-		if (!data || !Array.isArray(data[0]?.monthlyData)) return [];
-
-		return data[0].monthlyData.map(({ month, revenue }) => ({
-			name: month.substring(0, 3),
-			revenue,
-		}));
-	}, [data]);
-
+	const revenue = useMemo(() => generateMonthlyData(data, (revenue) => ({
+		revenue,
+	})), [data]);
 	return (
 		<>
 			<DashboardBox gridArea="a">
