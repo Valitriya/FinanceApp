@@ -3,7 +3,7 @@ import { useGetKpisQuery } from "@/state/api";
 import { useTheme } from "@mui/material";
 import DashboardBox from "@/components/DashboardBox";
 import BoxHeader from "@/components/BoxHeader";
-import {GetKpisResponse, MontlyDataItem } from "@/state/types";
+import {GetKpisResponse, MonthlyDataItem } from "@/state/types";
 import {
 	ResponsiveContainer,
 	AreaChart,
@@ -19,10 +19,11 @@ import {
 	Bar,
 } from "recharts";
 
-const generateMonthlyData = (data: GetKpisResponse | undefined, mapFunction: (revenue: number, expenses: number) => MontlyDataItem) => {
-	if(!data || !Array.isArray(data[0]?.monthlyData)) return [];
-	return data[0].monthlyData.map(({month, revenue, expenses}) => ({
-		name: month.substring(0, 3),
+const generateMonthlyData = (data: GetKpisResponse | undefined, mapFunction: (revenue: number, expenses: number) => MonthlyDataItem):MonthlyDataItem[] => {
+	if(!data || !Array.isArray(data.monthlyData)) return [];
+	const name = data.monthlyData[0]?.month.substring(0, 3);
+	return data.monthlyData.map(({revenue, expenses}) => ({
+		name,
 		...mapFunction(revenue, expenses),
 	}))
 }
