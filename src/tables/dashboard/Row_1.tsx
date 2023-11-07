@@ -51,7 +51,8 @@ const Row_1 = () => {
 		() =>
 			generateMonthlyData(data?.[0], (revenue, expenses) => ({
 				revenue,
-				profit: (revenue - expenses).toFixed(2),
+				expenses,
+				profit: parseFloat((revenue - expenses).toFixed(2)),
 			})),
 		[data]
 	);
