@@ -28,3 +28,8 @@ export interface GetKpisResponse{
     monthlyData: Array<Month>;
     dailyData: Array<Day>;
 }
+export interface MontlyDataItem{
+    name: string,
+    revenue: number,
+    expenses: number
+}
