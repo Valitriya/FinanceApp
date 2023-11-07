@@ -3,7 +3,7 @@ import { useGetKpisQuery } from "@/state/api";
 import { useTheme } from "@mui/material";
 import DashboardBox from "@/components/DashboardBox";
 import BoxHeader from "@/components/BoxHeader";
-import {GetKpisResponse, MonthlyDataItem } from "@/state/types";
+import { GetKpisResponse, MonthlyDataItem } from "@/state/types";
 import {
 	ResponsiveContainer,
 	AreaChart,
@@ -19,14 +19,17 @@ import {
 	Bar,
 } from "recharts";
 
-const generateMonthlyData = (data: GetKpisResponse | undefined, mapFunction: (revenue: number, expenses: number) => MonthlyDataItem):MonthlyDataItem[] => {
-	if(!data || !Array.isArray(data.monthlyData)) return [];
+const generateMonthlyData = (
+	data: GetKpisResponse | undefined,
+	mapFunction: (revenue: number, expenses: number) => MonthlyDataItem
+): MonthlyDataItem[] => {
+	if (!data || !Array.isArray(data.monthlyData)) return [];
 	const name = data.monthlyData[0]?.month.substring(0, 3);
-	return data.monthlyData.map(({revenue, expenses}) => ({
+	return data.monthlyData.map(({ revenue, expenses }) => ({
 		name,
 		...mapFunction(revenue, expenses),
-	}))
-}
+	}));
+};
 const Row_1 = () => {
 	const { palette } = useTheme();
 	const { data } = useGetKpisQuery();
@@ -35,18 +38,31 @@ const Row_1 = () => {
 
 	const COLOR_FONT = palette.grey[800];
 
-	const revenueExpenses = useMemo(() => generateMonthlyData(data, (revenue, expenses) => ({
-		revenue, expenses
-	})), [data]);
+	const revenueExpenses = useMemo(
+		() =>
+			generateMonthlyData(data?.[0], (revenue, expenses) => ({
+				revenue,
+				expenses,
+			})),
+		[data]
+	);
 
-	const revenueProfit = useMemo(() => generateMonthlyData(data, (revenue, expenses) => ({
-		revenue,
-		profit: (revenue - expenses).toFixed(2),
-	})), [data])
+	const revenueProfit = useMemo(
+		() =>
+			generateMonthlyData(data?.[0], (revenue, expenses) => ({
+				revenue,
+				profit: (revenue - expenses).toFixed(2),
+			})),
+		[data]
+	);
 
-	const revenue = useMemo(() => generateMonthlyData(data, (revenue) => ({
-		revenue,
-	})), [data]);
+	const revenue = useMemo(
+		() =>
+			generateMonthlyData(data?.[0], (revenue) => ({
+				revenue,
+			})),
+		[data]
+	);
 	return (
 		<>
 			<DashboardBox gridArea="a">
