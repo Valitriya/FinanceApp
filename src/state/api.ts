@@ -17,4 +17,4 @@ export const api = createApi({
 	}),
 });
 
-export const { useGetKpisQuery } = api;
+export const { useGetKpisQuery, useGetProductsQuery } = api;
