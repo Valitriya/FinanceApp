@@ -10,7 +10,7 @@ export const api = createApi({
 			query: () => "kpi/kpis",
 			providesTags: ["Kpis"],
 		}),
-		getProducts: build.query<Array<GetKpisResponse>, void>({
+		getProducts: build.query<Array<GetProductsResponse>, void>({
 			query: () => "product/products",
 			providesTags: ["Products"],
 		}),
