@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import DashboardBox from "@/components/DashboardBox";
 import BoxHeader from "@/components/BoxHeader";
 import { useTheme } from "@mui/material";
@@ -17,17 +18,26 @@ const Row_2 = () => {
 	const COLOR_FONT = palette.grey[800];
 	const {data} = useGetProductsQuery();
 	console.log("data:", data)
+
+	const operationalExpenses = useMemo(
+		() =>
+			generateMonthlyData(data?.[0], (revenue, expenses) => ({
+				revenue,
+				expenses:  expenses || 0,
+				profit: parseFloat((revenue - expenses).toFixed(2)),
+			})),
+		[data]
+	);
 	return (
 		<>
 			<DashboardBox gridArea="d">
 				<BoxHeader
-					title="Profit and Revenue"
-					subtitle="top line represents revenue, bottom line represents expenses"
+					title="Operational vs Non-Operational Expenses"
 					sideText="+4%"
 				/>
 				<ResponsiveContainer width="100%" height="100%">
 					<LineChart
-						data={revenueProfit}
+						data={operationalExpenses}
 						margin={{
 							top: 20,
 							right: 5,
@@ -47,6 +57,7 @@ const Row_2 = () => {
 						/>
 						<YAxis
 							yAxisId="left"
+							orientation="left"
 							tickLine={false}
 							axisLine={false}
 							style={{ fontSize: "10px", fill: COLOR_FONT }}
