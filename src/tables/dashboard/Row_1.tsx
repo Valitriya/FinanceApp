@@ -24,9 +24,9 @@ const generateMonthlyData = (
 	mapFunction: (revenue: number, expenses: number) => MonthlyDataItem
 ): MonthlyDataItem[] => {
 	if (!data || !Array.isArray(data.monthlyData)) return [];
-	const name = data.monthlyData[0]?.month.substring(0, 3);
-	return data.monthlyData.map(({ revenue, expenses }) => ({
-		name,
+
+	return data.monthlyData.map(({ revenue, expenses, month }) => ({
+		name: month.substring(0, 3),
 		...mapFunction(revenue, expenses),
 	}));
 };
