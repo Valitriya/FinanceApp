@@ -3,7 +3,6 @@ import DashboardBox from "@/components/DashboardBox";
 import BoxHeader from "@/components/BoxHeader";
 import { useTheme } from "@mui/material";
 import { useGetProductsQuery, useGetKpisQuery } from "@/state/api";
-import { GetKpisResponse, MonthlyDataItem } from "@/state/types";
 import {
 	ResponsiveContainer,
 	CartesianGrid,
@@ -15,32 +14,27 @@ import {
 } from "recharts";
 
 const Row_2 = () => {
-	const {palette} = useTheme();
+	const { palette } = useTheme();
 	const COLOR_FONT = palette.grey[800];
-	const {data: operationalData} = useGetKpisQuery();
-	const {data: productData} = useGetProductsQuery();
-	console.log("data:", operationalData)
 
-	const generateMonthlyData = (
-		data: GetKpisResponse | undefined,
-		mapFunction: (revenue: number, expenses: number) => MonthlyDataItem
-	): MonthlyDataItem[] => {
-		if (!data || !Array.isArray(data.monthlyData)) return [];
+	const { data: operationalData } = useGetKpisQuery();
+	const { data: productData } = useGetProductsQuery();
+	console.log("data:", operationalData);
 
-		return data.monthlyData.map(({ month, revenue, expenses }) => ({
-			name: month.substring(0, 3),
-			...mapFunction(revenue, expenses),
-		}));
-	};
-
-	const operationalExpenses = useMemo(
-		() =>
-			generateMonthlyData(operationalData?.[0], (operationalExpenses, nonOperationalExpenses) => ({
-				"Operational Expenses": operationalExpenses,
-				"Non Operational Expenses":  nonOperationalExpenses || 0,
-			})),
-		[operationalData]
-	);
+	const operationalExpenses = useMemo(() => {
+		return (
+			operationalData &&
+			operationalData[0].monthlyData.map(
+				({ month, operationalExpenses, nonOperationalExpenses }) => {
+					return {
+						name: month.substring(0, 3),
+						"Operational Expenses": operationalExpenses,
+						"Non Operational Expenses": nonOperationalExpenses,
+					};
+				}
+			)
+		);
+	}, [operationalData]);
 
 	return (
 		<>
@@ -59,11 +53,7 @@ const Row_2 = () => {
 							bottom: 60,
 						}}
 					>
-						<CartesianGrid
-							vertical={false}
-							stroke={COLOR_FONT}
-							strokeDasharray="3 3"
-						/>
+						<CartesianGrid vertical={false} stroke={COLOR_FONT} />
 						<XAxis
 							dataKey="name"
 							tickLine={false}
