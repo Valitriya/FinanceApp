@@ -11,9 +11,9 @@ import {
 	Tooltip,
 	LineChart,
 	Line,
-	PieChart, 
+	PieChart,
 	Pie,
-	Cell
+	Cell,
 } from "recharts";
 
 const Row_2 = () => {
@@ -93,7 +93,15 @@ const Row_2 = () => {
 				</ResponsiveContainer>
 			</DashboardBox>
 			<DashboardBox gridArea="e">
-				<PieChart width={110} height={100}>
+				<PieChart 
+					width={110}
+					height={100}
+					margin={{
+						top: 0,
+						right: -10,
+						left: 10,
+						bottom: 0,
+					}}>
 					<Pie
 						data={data}
 						cx={120}
