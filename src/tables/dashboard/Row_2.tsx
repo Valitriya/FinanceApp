@@ -16,6 +16,16 @@ import {
 	Cell,
 } from "recharts";
 
+const pieData = [
+	{
+		name: "Group A",
+		value: 600,
+	},
+	{
+		name: "Group B",
+		value: 400,
+	},
+]
 const Row_2 = () => {
 	const { palette } = useTheme();
 	const COLOR_FONT = palette.grey[800];
