@@ -130,6 +130,9 @@ const Row_2 = () => {
 							))}
 						</Pie>
 					</PieChart>
+					<Box ml="-0.7rem" flexBasis="40%" textAlign="center">
+
+					</Box>
 				</FlexBetween>
 			</DashboardBox>
 			<DashboardBox gridArea="f"></DashboardBox>
