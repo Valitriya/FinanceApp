@@ -15,6 +15,7 @@ import {
 	Pie,
 	Cell,
 } from "recharts";
+import FlexBetween from "@/components/FlexBetween";
 
 const pieData = [
 	{
@@ -25,7 +26,7 @@ const pieData = [
 		name: "Group B",
 		value: 400,
 	},
-]
+];
 const Row_2 = () => {
 	const { palette } = useTheme();
 	const COLOR_FONT = palette.grey[800];
@@ -104,35 +105,32 @@ const Row_2 = () => {
 				</ResponsiveContainer>
 			</DashboardBox>
 			<DashboardBox gridArea="e">
-			<BoxHeader
-					title="Campaigns and Targets"
-					sideText="+4%"
-				/>
-				<PieChart 
-					width={110}
-					height={100}
-					margin={{
-						top: 0,
-						right: -10,
-						left: 10,
-						bottom: 0,
-					}}>
-					<Pie
-						stroke="none"
-						data={pieData}
-						innerRadius={18}
-						outerRadius={38}
-						paddingAngle={2}
-						dataKey="value"
+				<BoxHeader title="Campaigns and Targets" sideText="+4%" />
+				<FlexBetween mt="0.25rem" gap="1.5rem" pr="1rem">
+					<PieChart
+						width={110}
+						height={100}
+						margin={{
+							top: 0,
+							right: -10,
+							left: 10,
+							bottom: 0,
+						}}
 					>
-						{pieData.map((entry, index) => (
-							<Cell
-								key={`cell-${index}`}
-								fill={pieColors[index]}
-							/>
-						))}
-					</Pie>
-				</PieChart>
+						<Pie
+							stroke="none"
+							data={pieData}
+							innerRadius={18}
+							outerRadius={38}
+							paddingAngle={2}
+							dataKey="value"
+						>
+							{pieData.map((entry, index) => (
+								<Cell key={`cell-${index}`} fill={pieColors[index]} />
+							))}
+						</Pie>
+					</PieChart>
+				</FlexBetween>
 			</DashboardBox>
 			<DashboardBox gridArea="f"></DashboardBox>
 		</>
