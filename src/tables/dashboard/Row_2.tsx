@@ -144,6 +144,12 @@ const Row_2 = () => {
 					<Box flexBasis="40%">
 						<Typography variant="h5">Losses in Revenue</Typography>
 						<Typography variant="h6">Losses are down 25%</Typography>
+						<Typography mt="0.4rem" variant="h5">
+							Profit Margins
+						</Typography>
+						<Typography variant="h6">
+							Margins are up by 30% from last month.
+						</Typography>
 					</Box>
 				</FlexBetween>
 			</DashboardBox>
