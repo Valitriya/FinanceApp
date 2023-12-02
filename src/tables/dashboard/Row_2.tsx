@@ -3,6 +3,8 @@ import DashboardBox from "@/components/DashboardBox";
 import BoxHeader from "@/components/BoxHeader";
 import { useTheme } from "@mui/material";
 import { useGetProductsQuery, useGetKpisQuery } from "@/state/api";
+import { Box } from "@mui/material";
+import Typography from "@mui/material/Typography";
 import {
 	ResponsiveContainer,
 	CartesianGrid,
@@ -131,7 +133,7 @@ const Row_2 = () => {
 						</Pie>
 					</PieChart>
 					<Box ml="-0.7rem" flexBasis="40%" textAlign="center">
-
+						<Typography variant="h5">Target Sales</Typography>
 					</Box>
 				</FlexBetween>
 			</DashboardBox>
