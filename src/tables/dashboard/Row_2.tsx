@@ -114,6 +114,7 @@ const Row_2 = () => {
 						bottom: 0,
 					}}>
 					<Pie
+						stroke="none"
 						data={pieData}
 						innerRadius={18}
 						outerRadius={38}
