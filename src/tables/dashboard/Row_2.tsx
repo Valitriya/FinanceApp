@@ -141,6 +141,10 @@ const Row_2 = () => {
 							Finance goals of the campaign that is desired
 						</Typography>
 					</Box>
+					<Box flexBasis="40%">
+						<Typography variant="h5">Losses in Revenue</Typography>
+						<Typography variant="h6">Losses are down 25%</Typography>
+					</Box>
 				</FlexBetween>
 			</DashboardBox>
 			<DashboardBox gridArea="f"></DashboardBox>
