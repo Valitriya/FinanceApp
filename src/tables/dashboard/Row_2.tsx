@@ -104,6 +104,10 @@ const Row_2 = () => {
 				</ResponsiveContainer>
 			</DashboardBox>
 			<DashboardBox gridArea="e">
+			<BoxHeader
+					title="Campaigns and Targets"
+					sideText="+4%"
+				/>
 				<PieChart 
 					width={110}
 					height={100}
