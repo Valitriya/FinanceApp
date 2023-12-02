@@ -32,7 +32,7 @@ const pieData = [
 const Row_2 = () => {
 	const { palette } = useTheme();
 	const COLOR_FONT = palette.grey[800];
-	const pieColors = [COLOR_FONT, palette.primary[300]];
+	const pieColors = [palette.primary[800], palette.primary[300]];
 
 	const { data: operationalData } = useGetKpisQuery();
 	const { data: productData } = useGetProductsQuery();
@@ -108,7 +108,7 @@ const Row_2 = () => {
 			</DashboardBox>
 			<DashboardBox gridArea="e">
 				<BoxHeader title="Campaigns and Targets" sideText="+4%" />
-				<FlexBetween mt="0.25rem" gap="1.5rem" pr="1rem">
+				<FlexBetween mt="-0.25rem" gap="1.5rem" pr="1rem">
 					<PieChart
 						width={110}
 						height={100}
@@ -134,7 +134,7 @@ const Row_2 = () => {
 					</PieChart>
 					<Box ml="-0.7rem" flexBasis="40%" textAlign="center">
 						<Typography variant="h5">Target Sales</Typography>
-						<Typography m="0.3rem 0" variant="h3" color={palette.primary[300]}>
+						<Typography m="0.3rem 0" variant="h3" color={palette.primary[500]}>
 							83
 						</Typography>
 						<Typography variant="h6">
