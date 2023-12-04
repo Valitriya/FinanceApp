@@ -18,7 +18,7 @@ import {
 	Pie,
 	Cell,
 	ScatterChart,
-	Scatter
+	Scatter,
 } from "recharts";
 
 const pieData = [
@@ -46,7 +46,7 @@ const Row_2 = () => {
 		tickLine: false,
 		style: { fontSize: "10px" },
 		tickFormatter: (v: number) => `$${v}`,
-	  };
+	};
 
 	const operationalExpenses = useMemo(() => {
 		return (
@@ -62,7 +62,18 @@ const Row_2 = () => {
 			)
 		);
 	}, [operationalData]);
-
+	const productExpenseData = useMemo(() => {
+		return (
+			productData &&
+			productData.map(({ __id, price, expense }) => {
+				return {
+					id: __id,
+					price,
+					expense,
+				};
+			})
+		);
+	}, [productData]);
 	return (
 		<>
 			<DashboardBox gridArea="d">
@@ -174,21 +185,16 @@ const Row_2 = () => {
 							left: 20,
 						}}
 					>
-						<CartesianGrid stroke={COLOR_FONT}/>
-						<XAxis 
-							dataKey="price" 
-							name="price" 
-							{...axisProps} />
-						<YAxis 
-							dataKey="expense" 
-							name="expense" 
-							{...axisProps} />
+						<CartesianGrid stroke={COLOR_FONT} />
+						<XAxis dataKey="price" name="price" {...axisProps} />
+						<YAxis dataKey="expense" name="expense" {...axisProps} />
 						<ZAxis type="number" range={[20]} />
 						<Tooltip formatter={(v) => `$${v}`} />
-						<Scatter 
-							name="Product Expense Ratio" 
-							data={productExpenseData} 
-							fill={palette.tertiary[500]} />
+						<Scatter
+							name="Product Expense Ratio"
+							data={productExpenseData}
+							fill={palette.tertiary[500]}
+						/>
 					</ScatterChart>
 				</ResponsiveContainer>
 			</DashboardBox>
