@@ -185,7 +185,10 @@ const Row_2 = () => {
 							{...axisProps} />
 						<ZAxis type="number" range={[20]} />
 						<Tooltip formatter={(v) => `$${v}`} />
-						<Scatter name="A school" data={data} fill="#8884d8" />
+						<Scatter 
+							name="Product Expense Ratio" 
+							data={productExpenseData} 
+							fill={palette.tertiary[500]} />
 					</ScatterChart>
 				</ResponsiveContainer>
 			</DashboardBox>
