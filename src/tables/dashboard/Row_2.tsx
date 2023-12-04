@@ -39,6 +39,14 @@ const Row_2 = () => {
 	const { data: productData } = useGetProductsQuery();
 	console.log("data:", operationalData);
 
+	const axisProps = {
+		type: "number" as const,
+		axisLine: false,
+		tickLine: false,
+		style: { fontSize: "10px" },
+		tickFormatter: (v: number) => `$${v}`,
+	  };
+
 	const operationalExpenses = useMemo(() => {
 		return (
 			operationalData &&
@@ -167,21 +175,13 @@ const Row_2 = () => {
 					>
 						<CartesianGrid stroke={COLOR_FONT}/>
 						<XAxis 
-							type="number" 
 							dataKey="price" 
 							name="price" 
-							axisLine={false}
-							tickLine={false}
-							style={{ fontSize: "10px"}}
-							tickFormatter={(v) => `$${v}`} />
+							{...axisProps} />
 						<YAxis 
-							type="number" 
 							dataKey="expense" 
 							name="expense" 
-							axisLine={false}
-							tickLine={false}
-							style={{ fontSize: "10px"}}
-							tickFormatter={(v) => `$${v}`} />
+							{...axisProps} />
 						<Tooltip cursor={{ strokeDasharray: "3 3" }} />
 						<Scatter name="A school" data={data} fill="#8884d8" />
 					</ScatterChart>
