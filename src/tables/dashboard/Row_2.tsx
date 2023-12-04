@@ -1,9 +1,9 @@
 import { useMemo } from "react";
+import { useGetProductsQuery, useGetKpisQuery } from "@/state/api";
 import DashboardBox from "@/components/DashboardBox";
 import BoxHeader from "@/components/BoxHeader";
-import { useTheme } from "@mui/material";
-import { useGetProductsQuery, useGetKpisQuery } from "@/state/api";
-import { Box } from "@mui/material";
+import FlexBetween from "@/components/FlexBetween";
+import { useTheme, Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import {
 	ResponsiveContainer,
@@ -17,7 +17,6 @@ import {
 	Pie,
 	Cell,
 } from "recharts";
-import FlexBetween from "@/components/FlexBetween";
 
 const pieData = [
 	{
@@ -95,7 +94,7 @@ const Row_2 = () => {
 							yAxisId="left"
 							type="monotone"
 							dataKey="Non Operational Expenses"
-							stroke={palette.tertiary[500]}
+							stroke={palette.secondary[500]}
 						/>
 						<Line
 							yAxisId="right"
