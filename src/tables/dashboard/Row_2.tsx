@@ -165,7 +165,7 @@ const Row_2 = () => {
 							left: 20,
 						}}
 					>
-						<CartesianGrid />
+						<CartesianGrid stroke={COLOR_FONT}/>
 						<XAxis type="number" dataKey="x" name="stature" unit="cm" />
 						<YAxis type="number" dataKey="y" name="weight" unit="kg" />
 						<Tooltip cursor={{ strokeDasharray: "3 3" }} />
