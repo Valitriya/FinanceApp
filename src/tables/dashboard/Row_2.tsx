@@ -10,12 +10,15 @@ import {
 	CartesianGrid,
 	XAxis,
 	YAxis,
+	ZAxis,
 	Tooltip,
 	LineChart,
 	Line,
 	PieChart,
 	Pie,
 	Cell,
+	ScatterChart,
+	Scatter,
 } from "recharts";
 
 const pieData = [
@@ -37,6 +40,14 @@ const Row_2 = () => {
 	const { data: productData } = useGetProductsQuery();
 	console.log("data:", operationalData);
 
+	const axisProps = {
+		type: "number" as const,
+		axisLine: false,
+		tickLine: false,
+		style: { fontSize: "10px" },
+		tickFormatter: (v: number) => `$${v}`,
+	};
+
 	const operationalExpenses = useMemo(() => {
 		return (
 			operationalData &&
@@ -51,7 +62,18 @@ const Row_2 = () => {
 			)
 		);
 	}, [operationalData]);
-
+	const productExpenseData = useMemo(() => {
+		return (
+			productData &&
+			productData.map(({ __id, price, expense }) => {
+				return {
+					id: __id,
+					price,
+					expense,
+				};
+			})
+		);
+	}, [productData]);
 	return (
 		<>
 			<DashboardBox gridArea="d">
@@ -152,7 +174,30 @@ const Row_2 = () => {
 					</Box>
 				</FlexBetween>
 			</DashboardBox>
-			<DashboardBox gridArea="f"></DashboardBox>
+			<DashboardBox gridArea="f">
+				<BoxHeader title="Product Prices vs Expenses" sideText="+4%" />
+				<ResponsiveContainer width="100%" height="100%">
+					<ScatterChart
+						margin={{
+							top: 20,
+							right: 20,
+							bottom: 50,
+							left: -20,
+						}}
+					>
+						<CartesianGrid strokeDasharray="3 3" />
+						<XAxis dataKey="price" name="price" {...axisProps} />
+						<YAxis dataKey="expense" name="expense" {...axisProps} />
+						<ZAxis type="number" range={[20]} />
+						<Tooltip formatter={(v) => `$${v}`} />
+						<Scatter
+							name="Product Expense Ratio"
+							data={productExpenseData}
+							fill={palette.tertiary[500]}
+						/>
+					</ScatterChart>
+				</ResponsiveContainer>
+			</DashboardBox>
 		</>
 	);
 };
