@@ -176,16 +176,16 @@ const Row_2 = () => {
 			</DashboardBox>
 			<DashboardBox gridArea="f">
 				<BoxHeader title="Product Prices vs Expenses" sideText="+4%" />
-				<ResponsiveContainer width="100%" height={400}>
+				<ResponsiveContainer width="100%" height="100%">
 					<ScatterChart
 						margin={{
 							top: 20,
 							right: 20,
-							bottom: 20,
-							left: 20,
+							bottom: 50,
+							left: -20,
 						}}
 					>
-						<CartesianGrid stroke={COLOR_FONT} />
+						<CartesianGrid strokeDasharray="3 3" />
 						<XAxis dataKey="price" name="price" {...axisProps} />
 						<YAxis dataKey="expense" name="expense" {...axisProps} />
 						<ZAxis type="number" range={[20]} />
