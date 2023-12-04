@@ -10,6 +10,7 @@ import {
 	CartesianGrid,
 	XAxis,
 	YAxis,
+	ZAxis,
 	Tooltip,
 	LineChart,
 	Line,
@@ -182,6 +183,7 @@ const Row_2 = () => {
 							dataKey="expense" 
 							name="expense" 
 							{...axisProps} />
+						<ZAxis type="number" range={[20]} />
 						<Tooltip formatter={(v) => `$${v}`} />
 						<Scatter name="A school" data={data} fill="#8884d8" />
 					</ScatterChart>
