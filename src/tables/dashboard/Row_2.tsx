@@ -55,7 +55,9 @@ const Row_2 = () => {
 
 	const { data: operationalData } = useGetKpisQuery();
 	const { data: productData } = useGetProductsQuery();
-	console.log("data:", operationalData);
+
+	const operationalExpenses = useMemo(() => createExpenseData(operationalData && operationalData[0].monthlyData), [operationalData]);
+	const productExpenseData = useMemo(() => createExpenseData(productData), [productData]);
 
 	const axisProps = {
 		type: "number" as const,
