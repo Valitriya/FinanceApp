@@ -41,6 +41,13 @@ const createExpenseData = (data) => {
 		}))
 	);
 };
+const createProductData = (data) => {
+	return data && data.map(({ __id, price, expense }) => ({
+				id: __id,
+				price,
+				expense,
+		}));
+}
 const Row_2 = () => {
 	const { palette } = useTheme();
 	const COLOR_FONT = palette.grey[800];
@@ -58,18 +65,7 @@ const Row_2 = () => {
 		tickFormatter: (v: number) => `$${v}`,
 	};
 
-	const productExpenseData = useMemo(() => {
-		return (
-			productData &&
-			productData.map(({ __id, price, expense }) => {
-				return {
-					id: __id,
-					price,
-					expense,
-				};
-			})
-		);
-	}, [productData]);
+
 	return (
 		<>
 			<DashboardBox gridArea="d">
