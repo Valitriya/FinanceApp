@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { useGetProductsQuery, useGetKpisQuery } from "@/state/api";
+import { Month, GetProductsResponse } from "@/state/types";
 import DashboardBox from "@/components/DashboardBox";
 import BoxHeader from "@/components/BoxHeader";
 import FlexBetween from "@/components/FlexBetween";
@@ -31,17 +32,17 @@ const pieData = [
 		value: 400,
 	},
 ];
-const createExpenseData = (data) => {
+const createExpenseData = (data: Month[] | undefined) => {
 	return (
 		data &&
 		data.map(({ month, operationalExpenses, nonOperationalExpenses }) => ({
 			name: month.substring(0, 3),
-			"Operational Expenses": operationalExpenses,
-			"Non Operational Expenses": nonOperationalExpenses,
+			"Operational Expenses": operationalExpenses || 0,
+			"Non Operational Expenses": nonOperationalExpenses || 0,
 		}))
 	);
 };
-const createProductData = (data) => {
+const createProductData = (data: GetProductsResponse[] | undefined) => {
 	return data && data.map(({ __id, price, expense }) => ({
 				id: __id,
 				price,
