@@ -31,6 +31,16 @@ const pieData = [
 		value: 400,
 	},
 ];
+const createExpenseData = (data) => {
+	return (
+		data &&
+		data.map(({ month, operationalExpenses, nonOperationalExpenses }) => ({
+			name: month.substring(0, 3),
+			"Operational Expenses": operationalExpenses,
+			"Non Operational Expenses": nonOperationalExpenses,
+		}))
+	);
+};
 const Row_2 = () => {
 	const { palette } = useTheme();
 	const COLOR_FONT = palette.grey[800];
@@ -48,20 +58,6 @@ const Row_2 = () => {
 		tickFormatter: (v: number) => `$${v}`,
 	};
 
-	const operationalExpenses = useMemo(() => {
-		return (
-			operationalData &&
-			operationalData[0].monthlyData.map(
-				({ month, operationalExpenses, nonOperationalExpenses }) => {
-					return {
-						name: month.substring(0, 3),
-						"Operational Expenses": operationalExpenses,
-						"Non Operational Expenses": nonOperationalExpenses,
-					};
-				}
-			)
-		);
-	}, [operationalData]);
 	const productExpenseData = useMemo(() => {
 		return (
 			productData &&
