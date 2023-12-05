@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { useGetProductsQuery, useGetKpisQuery } from "@/state/api";
+import { Month, GetProductsResponse } from "@/state/types";
 import DashboardBox from "@/components/DashboardBox";
 import BoxHeader from "@/components/BoxHeader";
 import FlexBetween from "@/components/FlexBetween";
@@ -31,6 +32,23 @@ const pieData = [
 		value: 400,
 	},
 ];
+const createExpenseData = (data: Month[] | undefined) => {
+	return (
+		data &&
+		data.map(({ month, operationalExpenses, nonOperationalExpenses }) => ({
+			name: month.substring(0, 3),
+			"Operational Expenses": operationalExpenses || 0,
+			"Non Operational Expenses": nonOperationalExpenses || 0,
+		}))
+	);
+};
+const createProductData = (data: GetProductsResponse[] | undefined) => {
+	return data && data.map(({ __id, price, expense }) => ({
+				id: __id,
+				price,
+				expense,
+		}));
+}
 const Row_2 = () => {
 	const { palette } = useTheme();
 	const COLOR_FONT = palette.grey[800];
@@ -38,7 +56,9 @@ const Row_2 = () => {
 
 	const { data: operationalData } = useGetKpisQuery();
 	const { data: productData } = useGetProductsQuery();
-	console.log("data:", operationalData);
+
+	const operationalExpenses = useMemo(() => createExpenseData(operationalData && operationalData[0].monthlyData), [operationalData]);
+	const productExpenseData = useMemo(() => createProductData(productData), [productData]);
 
 	const axisProps = {
 		type: "number" as const,
@@ -48,32 +68,7 @@ const Row_2 = () => {
 		tickFormatter: (v: number) => `$${v}`,
 	};
 
-	const operationalExpenses = useMemo(() => {
-		return (
-			operationalData &&
-			operationalData[0].monthlyData.map(
-				({ month, operationalExpenses, nonOperationalExpenses }) => {
-					return {
-						name: month.substring(0, 3),
-						"Operational Expenses": operationalExpenses,
-						"Non Operational Expenses": nonOperationalExpenses,
-					};
-				}
-			)
-		);
-	}, [operationalData]);
-	const productExpenseData = useMemo(() => {
-		return (
-			productData &&
-			productData.map(({ __id, price, expense }) => {
-				return {
-					id: __id,
-					price,
-					expense,
-				};
-			})
-		);
-	}, [productData]);
+
 	return (
 		<>
 			<DashboardBox gridArea="d">
