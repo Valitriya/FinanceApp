@@ -1,5 +1,6 @@
 import DashboardBox from "@/components/DashboardBox";
 import BoxHeader from "@/components/BoxHeader";
+import { Box, useTheme } from "@mui/material";
 import {
 	useGetKpisQuery,
 	useGetProductsQuery,
@@ -11,6 +12,8 @@ const Row_3 = () => {
 	const { data: productData } = useGetProductsQuery();
 	const { data: transactionData } = useGetTransactionsQuery();
 
+	const { palette } = useTheme();
+
 	return (
 		<>
 			<DashboardBox gridArea="h">
@@ -18,6 +21,17 @@ const Row_3 = () => {
 					title="List of Products"
 					sideText={`${productData?.length} products`}
 				/>
+				<Box
+					mt="0.5rem"
+					p="0 0.5rem"
+					height="75%"
+					sx={{
+						"& .MuiDataGrid-root": {
+							color: palette.grey[300],
+							border: "none",
+						},
+					}}
+				></Box>
 			</DashboardBox>
 			<DashboardBox gridArea="g"></DashboardBox>
 			<DashboardBox gridArea="i"></DashboardBox>
