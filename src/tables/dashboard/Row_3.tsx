@@ -1,7 +1,7 @@
 import DashboardBox from "@/components/DashboardBox";
 import BoxHeader from "@/components/BoxHeader";
 import { Box, useTheme } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridCellParams } from "@mui/x-data-grid";
 import {
 	useGetKpisQuery,
 	useGetProductsQuery,
@@ -20,6 +20,12 @@ const Row_3 = () => {
 			field: "_id",
 			headerName: "id",
 			flex: 1
+		},
+		{
+			field: "expense",
+			headerName: "Expense",
+			flex: 0.5,
+			renderCell: (params: GridCellParams) => `$${params.value}`
 		}
 	]
 	return (
