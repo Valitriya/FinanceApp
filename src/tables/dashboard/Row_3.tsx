@@ -15,6 +15,13 @@ const Row_3 = () => {
 
 	const { palette } = useTheme();
 
+	const productColumns = [
+		{
+			field: "_id",
+			headerName: "id",
+			flex: 1
+		}
+	]
 	return (
 		<>
 			<DashboardBox gridArea="h">
