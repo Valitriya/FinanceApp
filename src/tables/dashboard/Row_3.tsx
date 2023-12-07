@@ -1,6 +1,7 @@
 import DashboardBox from "@/components/DashboardBox";
 import BoxHeader from "@/components/BoxHeader";
 import { Box, useTheme } from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
 import {
 	useGetKpisQuery,
 	useGetProductsQuery,
@@ -31,7 +32,11 @@ const Row_3 = () => {
 							border: "none",
 						},
 					}}
-				></Box>
+				>
+					<DataGrid
+						rows={productData || []}
+						columns={productColumns}/>
+				</Box>
 			</DashboardBox>
 			<DashboardBox gridArea="g"></DashboardBox>
 			<DashboardBox gridArea="i"></DashboardBox>
