@@ -53,6 +53,9 @@ const Row_3 = () => {
 					}}
 				>
 					<DataGrid
+						columnHeaderHeight={15}
+						rowHeight={35}
+						hideFooter={true}
 						rows={productData || []}
 						columns={productColumns}/>
 				</Box>
