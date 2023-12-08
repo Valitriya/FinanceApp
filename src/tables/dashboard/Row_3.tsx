@@ -14,6 +14,7 @@ const Row_3 = () => {
 	const { data: transactionData } = useGetTransactionsQuery();
 
 	const { palette } = useTheme();
+	const COLOR_FONT = palette.grey[800];
 
 	const productColumns = [
 		{
@@ -50,6 +51,10 @@ const Row_3 = () => {
 							color: palette.grey[300],
 							border: "none",
 						},
+						"& .MuiDataGrid-cell": {
+							borderBottom: `1px solid ${COLOR_FONT}`,
+						},
+
 					}}
 				>
 					<DataGrid
