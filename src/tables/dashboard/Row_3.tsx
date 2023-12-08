@@ -52,9 +52,11 @@ const Row_3 = () => {
 							border: "none",
 						},
 						"& .MuiDataGrid-cell": {
-							borderBottom: `1px solid ${COLOR_FONT}`,
+							borderBottom: `1px dotted ${COLOR_FONT}`,
 						},
-
+						"& .MuiDataGrid-columnHeaders": {
+							borderBottom: `1px dotted ${COLOR_FONT}`,
+						},
 					}}
 				>
 					<DataGrid
