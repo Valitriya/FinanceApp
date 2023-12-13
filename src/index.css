@@ -9,3 +9,10 @@ body,
   font-family: "Inter", sans-serif;
   background-color: #1f2026;
 }
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #6b6d74 #48494e;
+}
+*:hover {
+  scrollbar-color: #6b6d74 #6b6d74;
+}
