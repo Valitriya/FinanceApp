@@ -16,3 +16,15 @@ body,
 *:hover {
   scrollbar-color: #6b6d74 #6b6d74;
 }
+::-webkit-scrollbar{
+  width: 10px;
+}
+::-webkit-scrollbar-track{
+  background: #48494e;
+}
+::-webkit-scrollbar-track:hover{
+  background: #6b6d74;
+}
+::-webkit-scrollbar-thumb{
+  background: #6b6d74;
+}
