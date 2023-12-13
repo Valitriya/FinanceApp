@@ -14,7 +14,7 @@ const Row_3 = () => {
 	const { data: transactionData } = useGetTransactionsQuery();
 
 	const { palette } = useTheme();
-	const COLOR_FONT = palette.grey[700];
+	const COLOR_FONT = palette.grey[800];
 
 	const productColumns = [
 		{
@@ -56,7 +56,7 @@ const Row_3 = () => {
 						},
 						"& .MuiDataGrid-columnHeaders": {
 							borderBottom: `1px solid ${COLOR_FONT} !important`,
-							paddingBottom: '5px',
+							paddingBottom: '2px',
 						}
 					}}
 				>
