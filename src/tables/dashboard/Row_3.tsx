@@ -14,7 +14,7 @@ const Row_3 = () => {
 	const { data: transactionData } = useGetTransactionsQuery();
 
 	const { palette } = useTheme();
-	const COLOR_FONT = palette.grey[800];
+	const COLOR_FONT = palette.grey[700];
 
 	const productColumns = [
 		{
@@ -43,20 +43,21 @@ const Row_3 = () => {
 					sideText={`${productData?.length} products`}
 				/>
 				<Box
-					mt="0.5rem"
+					mt="0.4rem"
 					p="0 0.5rem"
-					height="75%"
+					height="70%"
 					sx={{
 						"& .MuiDataGrid-root": {
 							color: palette.grey[300],
 							border: "none",
 						},
-						"& .MuiDataGrid-cell": {
-							borderBottom: `1px dotted ${COLOR_FONT}`,
+						'& .MuiDataGrid-cell[class*="cell"]': {
+							borderBottom: `1px solid ${COLOR_FONT}`,
 						},
 						"& .MuiDataGrid-columnHeaders": {
-							borderBottom: `1px dotted ${COLOR_FONT}`,
-						},
+							borderBottom: `1px solid ${COLOR_FONT} !important`,
+							paddingBottom: '5px',
+						}
 					}}
 				>
 					<DataGrid
