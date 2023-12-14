@@ -20,21 +20,21 @@ const Row_3 = () => {
 		{
 			field: "_id",
 			headerName: "id",
-			flex: 1
+			flex: 1,
 		},
 		{
 			field: "expense",
 			headerName: "Expense",
 			flex: 0.5,
-			renderCell: (params: GridCellParams) => `$${params.value}`
+			renderCell: (params: GridCellParams) => `$${params.value}`,
 		},
 		{
 			field: "price",
 			headerName: "Price",
 			flex: 0.5,
-			renderCell: (params: GridCellParams) => `$${params.value}`
-		}
-	]
+			renderCell: (params: GridCellParams) => `$${params.value}`,
+		},
+	];
 	return (
 		<>
 			<DashboardBox gridArea="h">
@@ -56,8 +56,8 @@ const Row_3 = () => {
 						},
 						"& .MuiDataGrid-columnHeaders": {
 							borderBottom: `1px solid ${COLOR_FONT} !important`,
-							paddingBottom: '2px',
-						}
+							paddingBottom: "2px",
+						},
 					}}
 				>
 					<DataGrid
@@ -65,10 +65,16 @@ const Row_3 = () => {
 						rowHeight={35}
 						hideFooter={true}
 						rows={productData || []}
-						columns={productColumns}/>
+						columns={productColumns}
+					/>
 				</Box>
 			</DashboardBox>
-			<DashboardBox gridArea="g"></DashboardBox>
+			<DashboardBox gridArea="g">
+				<BoxHeader
+					title="Recent Orders"
+					sideText={`${transactionData?.length} latest transactions`}
+				/>
+			</DashboardBox>
 			<DashboardBox gridArea="i"></DashboardBox>
 			<DashboardBox gridArea="j"></DashboardBox>
 		</>
