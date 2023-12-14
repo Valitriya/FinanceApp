@@ -74,10 +74,10 @@ const Row_3 = () => {
 					title="Recent Orders"
 					sideText={`${transactionData?.length} latest transactions`}
 				/>
-				<Box 
-					mt="1rem" 
-					p="0 0.5rem" 
-					height="80%" 
+				<Box
+					mt="1rem"
+					p="0 0.5rem"
+					height="80%"
 					sx={{
 						"& .MuiDataGrid-root": {
 							color: palette.grey[300],
@@ -90,7 +90,16 @@ const Row_3 = () => {
 							borderBottom: `1px solid ${COLOR_FONT} !important`,
 							paddingBottom: "2px",
 						},
-					}}/>
+					}}
+				>
+					<DataGrid
+						columnHeaderHeight={15}
+						rowHeight={35}
+						hideFooter={true}
+						rows={transactionData || []}
+						columns={transactionColumns}
+					/>
+				</Box>
 			</DashboardBox>
 			<DashboardBox gridArea="i"></DashboardBox>
 			<DashboardBox gridArea="j"></DashboardBox>
