@@ -74,6 +74,23 @@ const Row_3 = () => {
 					title="Recent Orders"
 					sideText={`${transactionData?.length} latest transactions`}
 				/>
+				<Box 
+					mt="1rem" 
+					p="0 0.5rem" 
+					height="80%" 
+					sx={{
+						"& .MuiDataGrid-root": {
+							color: palette.grey[300],
+							border: "none",
+						},
+						'& .MuiDataGrid-cell[class*="cell"]': {
+							borderBottom: `1px solid ${COLOR_FONT}`,
+						},
+						"& .MuiDataGrid-columnHeaders": {
+							borderBottom: `1px solid ${COLOR_FONT} !important`,
+							paddingBottom: "2px",
+						},
+					}}/>
 			</DashboardBox>
 			<DashboardBox gridArea="i"></DashboardBox>
 			<DashboardBox gridArea="j"></DashboardBox>
