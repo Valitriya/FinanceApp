@@ -1,5 +1,6 @@
 import DashboardBox from "@/components/DashboardBox";
 import BoxHeader from "@/components/BoxHeader";
+import FlexBetween from "@/components/FlexBetween";
 import { Box, useTheme } from "@mui/material";
 import { DataGrid, GridCellParams } from "@mui/x-data-grid";
 import {
@@ -56,7 +57,8 @@ const Row_3 = () => {
 			field: "productIds",
 			headerName: "Count",
 			flex: 0.1,
-			renderCell: (params: GridCellParams) => (params.value as Array<string>).length,
+			renderCell: (params: GridCellParams) =>
+				(params.value as Array<string>).length,
 		},
 	];
 	return (
@@ -126,7 +128,10 @@ const Row_3 = () => {
 				</Box>
 			</DashboardBox>
 			<DashboardBox gridArea="i">
-				<BoxHeader title="Expense Breakdown By Category" sideText="+4%"/>
+				<BoxHeader title="Expense Breakdown By Category" sideText="+4%" />
+				<FlexBetween mt="0.5rem" gap="0.5rem" p="0 1rem" textAlign="center">
+					
+				</FlexBetween>
 			</DashboardBox>
 			<DashboardBox gridArea="j"></DashboardBox>
 		</>
