@@ -35,6 +35,30 @@ const Row_3 = () => {
 			renderCell: (params: GridCellParams) => `$${params.value}`,
 		},
 	];
+	const transactionColumns = [
+		{
+			field: "_id",
+			headerName: "id",
+			flex: 1,
+		},
+		{
+			field: "buyer",
+			headerName: "Buyer",
+			flex: 0.67,
+		},
+		{
+			field: "amount",
+			headerName: "Amount",
+			flex: 0.35,
+			renderCell: (params: GridCellParams) => `$${params.value}`,
+		},
+		{
+			field: "productIds",
+			headerName: "Count",
+			flex: 0.1,
+			renderCell: (params: GridCellParams) => (params.value as Array<string>).length,
+		},
+	];
 	return (
 		<>
 			<DashboardBox gridArea="h">
@@ -77,7 +101,7 @@ const Row_3 = () => {
 				<Box
 					mt="1rem"
 					p="0 0.5rem"
-					height="80%"
+					height="75%"
 					sx={{
 						"& .MuiDataGrid-root": {
 							color: palette.grey[300],

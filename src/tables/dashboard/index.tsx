@@ -55,6 +55,7 @@ const Dashboard = () => {
 			height="100%"
 			display="grid"
 			gap="1.5rem"
+			mb="10rem"
 			sx={
 				isAboveMediumScreens
 					? {
