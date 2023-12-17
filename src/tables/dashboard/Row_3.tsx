@@ -8,6 +8,7 @@ import {
 	useGetProductsQuery,
 	useGetTransactionsQuery,
 } from "@/state/api";
+import { Cell, Pie, PieChart } from "recharts";
 
 const Row_3 = () => {
 	const { data: kpiData } = useGetKpisQuery();
@@ -130,7 +131,25 @@ const Row_3 = () => {
 			<DashboardBox gridArea="i">
 				<BoxHeader title="Expense Breakdown By Category" sideText="+4%" />
 				<FlexBetween mt="0.5rem" gap="0.5rem" p="0 1rem" textAlign="center">
-					
+					<Box>
+						<PieChart
+							width={110}
+							height={100}
+						>
+							<Pie
+								stroke="none"
+								data={pieData}
+								innerRadius={18}
+								outerRadius={38}
+								paddingAngle={2}
+								dataKey="value"
+							>
+								{pieData.map((entry, index) => (
+									<Cell key={`cell-${index}`} fill={pieColors[index]} />
+								))}
+							</Pie>
+						</PieChart>
+					</Box>
 				</FlexBetween>
 			</DashboardBox>
 			<DashboardBox gridArea="j"></DashboardBox>
