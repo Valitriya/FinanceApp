@@ -1,7 +1,7 @@
 import DashboardBox from "@/components/DashboardBox";
 import BoxHeader from "@/components/BoxHeader";
 import FlexBetween from "@/components/FlexBetween";
-import { Box, useTheme } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid, GridCellParams } from "@mui/x-data-grid";
 import {
 	useGetKpisQuery,
@@ -138,17 +138,18 @@ const Row_3 = () => {
 						>
 							<Pie
 								stroke="none"
-								data={pieData}
+								data={data}
 								innerRadius={18}
 								outerRadius={38}
 								paddingAngle={2}
 								dataKey="value"
 							>
-								{pieData.map((entry, index) => (
+								{data.map((entry, index) => (
 									<Cell key={`cell-${index}`} fill={pieColors[index]} />
 								))}
 							</Pie>
 						</PieChart>
+						<Typography variant="h5">{data[0].name}</Typography>
 					</Box>
 				</FlexBetween>
 			</DashboardBox>
