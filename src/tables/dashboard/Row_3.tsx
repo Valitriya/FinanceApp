@@ -125,7 +125,9 @@ const Row_3 = () => {
 					/>
 				</Box>
 			</DashboardBox>
-			<DashboardBox gridArea="i"></DashboardBox>
+			<DashboardBox gridArea="i">
+				<BoxHeader title="Expense Breakdown By Category" sideText="+4%"/>
+			</DashboardBox>
 			<DashboardBox gridArea="j"></DashboardBox>
 		</>
 	);
