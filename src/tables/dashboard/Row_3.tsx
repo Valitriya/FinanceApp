@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import DashboardBox from "@/components/DashboardBox";
 import BoxHeader from "@/components/BoxHeader";
 import FlexBetween from "@/components/FlexBetween";
@@ -18,6 +19,11 @@ const Row_3 = () => {
 	const { palette } = useTheme();
 	const COLOR_FONT = palette.grey[800];
 
+	const pieChartData = useMemo(() => {
+		if (kpiData) {
+			const totalExpenses = kpiData[0].totalExpenses;
+		}
+	}, [kpiData]);
 	const productColumns = [
 		{
 			field: "_id",
@@ -131,26 +137,25 @@ const Row_3 = () => {
 			<DashboardBox gridArea="i">
 				<BoxHeader title="Expense Breakdown By Category" sideText="+4%" />
 				<FlexBetween mt="0.5rem" gap="0.5rem" p="0 1rem" textAlign="center">
-					<Box>
-						<PieChart
-							width={110}
-							height={100}
-						>
-							<Pie
-								stroke="none"
-								data={data}
-								innerRadius={18}
-								outerRadius={38}
-								paddingAngle={2}
-								dataKey="value"
-							>
-								{data.map((entry, index) => (
-									<Cell key={`cell-${index}`} fill={pieColors[index]} />
-								))}
-							</Pie>
-						</PieChart>
-						<Typography variant="h5">{data[0].name}</Typography>
-					</Box>
+					{pieChartData?.map((data, i) => (
+						<Box key={`${data[0].name}-${i}`}>
+							<PieChart width={110} height={100}>
+								<Pie
+									stroke="none"
+									data={data}
+									innerRadius={18}
+									outerRadius={38}
+									paddingAngle={2}
+									dataKey="value"
+								>
+									{data.map((entry, index) => (
+										<Cell key={`cell-${index}`} fill={pieColors[index]} />
+									))}
+								</Pie>
+							</PieChart>
+							<Typography variant="h5">{data[0].name}</Typography>
+						</Box>
+					))}
 				</FlexBetween>
 			</DashboardBox>
 			<DashboardBox gridArea="j"></DashboardBox>
