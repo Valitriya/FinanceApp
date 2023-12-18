@@ -22,6 +22,14 @@ const Row_3 = () => {
 	const pieChartData = useMemo(() => {
 		if (kpiData) {
 			const totalExpenses = kpiData[0].totalExpenses;
+			return Object.entries(kpiData[0].expensesByCategory).map(
+				([key, value]) => {
+					return [
+						{ name: key, value },
+						{ name: `${key} of Total`, value: totalExpenses - value },
+					];
+				}
+			);
 		}
 	}, [kpiData]);
 	const productColumns = [
