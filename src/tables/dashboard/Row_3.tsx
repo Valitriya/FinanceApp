@@ -18,6 +18,7 @@ const Row_3 = () => {
 
 	const { palette } = useTheme();
 	const COLOR_FONT = palette.grey[800];
+	const pieColors = [COLOR_FONT, palette.primary[500]];
 
 	const pieChartData = useMemo(() => {
 		if (kpiData) {
