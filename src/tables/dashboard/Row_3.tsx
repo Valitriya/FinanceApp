@@ -18,12 +18,12 @@ const Row_3 = () => {
 
 	const { palette } = useTheme();
 	const COLOR_FONT = palette.grey[800];
-	const pieColors = [COLOR_FONT, palette.primary[500]];
+	const pieColors = [COLOR_FONT, palette.primary[500]]
 
 	const pieChartData = useMemo(() => {
 		if (kpiData) {
-			const totalExpenses = kpiData[0].totalExpenses;
-			return Object.entries(kpiData[0].expensesByCategory).map(
+			const totalExpenses = kpiData[0]?.totalExpenses || 0;
+			return Object.entries(kpiData[0]?.expensesByCategory || {}).map(
 				([key, value]) => {
 					return [
 						{ name: key, value },
