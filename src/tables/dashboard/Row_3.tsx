@@ -18,7 +18,7 @@ const Row_3 = () => {
 
 	const { palette } = useTheme();
 	const COLOR_FONT = palette.grey[800];
-	const pieColors = [palette.primary[800], palette.primary[300]]
+	const pieColors = [palette.primary[800], palette.primary[300]];
 
 	const pieChartData = useMemo(() => {
 		if (kpiData) {
@@ -168,12 +168,22 @@ const Row_3 = () => {
 				</FlexBetween>
 			</DashboardBox>
 			<DashboardBox gridArea="j">
-				<BoxHeader title="Overall Summary and Explanation Data" sideText="+15%"/>
+				<BoxHeader
+					title="Overall Summary and Explanation Data"
+					sideText="+15%"
+				/>
 				<Box
 					height="15px"
 					margin="1.25rem 1rem 0.4rem 1rem"
 					bgcolor={palette.primary[800]}
-					borderRadius="1rem">
+					borderRadius="1rem"
+				>
+					<Box
+						bgcolor={palette.primary[600]}
+						borderRadius="1rem"
+						height="15px"
+						width="40%"
+					></Box>
 				</Box>
 			</DashboardBox>
 		</>
