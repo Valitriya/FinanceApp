@@ -21,6 +21,7 @@ const Predictions = () => {
 	const { data: kpiData } = useGetKpisQuery();
 
 	const COLOR_FONT = palette.grey[800];
+	const MONTHLY_DATA_DOMAIN = [12000, 26000];
 	return (
 		<DashboardBox width="100%" height="100%" p="1rem" overflow="hidden">
 			<FlexBetween m="1rem 2.5rem" gap="0.3rem">
@@ -61,9 +62,9 @@ const Predictions = () => {
 						<Label value="Month" offset={-5} position="insideBottom"/>
 					</XAxis>
 					<YAxis
-						tickLine={false}
-						axisLine={false}
-						style={{ fontSize: "10px", fill: COLOR_FONT }}
+						domain={MONTHLY_DATA_DOMAIN}
+						axisLine={{strokeWidth: "0"}}
+						tickFormatter={(v) => `$${v}`}
 					>
 						<Label value="Revenue in USD" angle={-90}offset={-5} position="insideLeft"/>
 					</YAxis>
