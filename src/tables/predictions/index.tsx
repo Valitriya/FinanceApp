@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useGetKpisQuery } from "@/state/api";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Button, Typography, useTheme } from "@mui/material";
 import DashboardBox from "@/components/DashboardBox";
 import FlexBetween from "@/components/FlexBetween";
 
@@ -14,9 +14,20 @@ const Predictions = () => {
 				<Box>
 					<Typography variant="h3">Revenue and Predictions</Typography>
 					<Typography variant="h6">
-						charted revenue and predicted revenue based on a simple linear regression model
+						charted revenue and predicted revenue based on a simple linear
+						regression model
 					</Typography>
 				</Box>
+				<Button
+					onClick={() => setIsPredictions(!isPredictions)}
+					sx={{
+						color: palette.grey[900],
+						backgroundColor: palette.grey[700],
+						boxShadow: "0.1rem 0.1rem 0.1rem 0.1rem rgba(0,0,0,0.4)",
+					}}
+				>
+					Show Predicted Revenue for Next Year
+				</Button>
 			</FlexBetween>
 		</DashboardBox>
 	);
