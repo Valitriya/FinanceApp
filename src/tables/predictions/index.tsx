@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useTheme } from "@emotion/react";
 import { useGetKpisQuery } from "@/state/api";
+import { Box, Typography, useTheme } from "@mui/material";
 import DashboardBox from "@/components/DashboardBox";
 import FlexBetween from "@/components/FlexBetween";
 
@@ -10,7 +10,11 @@ const Predictions = () => {
 	const { data: kpiData } = useGetKpisQuery();
 	return (
 		<DashboardBox width="100%" height="100%" p="1rem" overflow="hidden">
-			<FlexBetween m="1rem 2.5rem"></FlexBetween>
+			<FlexBetween m="1rem 2.5rem">
+				<Box>
+					<Typography variant="h3">Revenue and Predictions</Typography>
+				</Box>
+			</FlexBetween>
 		</DashboardBox>
 	);
 };
