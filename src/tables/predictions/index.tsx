@@ -83,10 +83,10 @@ const Predictions = () => {
 						dot={{strokeWidth: 5}}
 					/>
 					<Line
-						yAxisId="right"
 						type="monotone"
-						dataKey="revenue"
-						stroke={palette.primary[500]}
+						dataKey="Regression Line"
+						stroke={palette.tertiary[500]}
+						dot={false}
 					/>
 				</LineChart>
 			</ResponsiveContainer>
