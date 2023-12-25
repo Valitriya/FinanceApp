@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useGetKpisQuery } from "@/state/api";
 import { Box, Button, Typography, useTheme } from "@mui/material";
+import { Label } from "@mui/icons-material";
 import DashboardBox from "@/components/DashboardBox";
 import FlexBetween from "@/components/FlexBetween";
 import {
@@ -18,7 +19,7 @@ const Predictions = () => {
 	const { palette } = useTheme();
 	const [isPredictions, setIsPredictions] = useState(false);
 	const { data: kpiData } = useGetKpisQuery();
-	
+
 	const COLOR_FONT = palette.grey[800];
 	return (
 		<DashboardBox width="100%" height="100%" p="1rem" overflow="hidden">
@@ -51,35 +52,21 @@ const Predictions = () => {
 						bottom: 80,
 					}}
 				>
-					<CartesianGrid
-						stroke={COLOR_FONT}
-						strokeDasharray="3 3"
-					/>
+					<CartesianGrid stroke={COLOR_FONT} strokeDasharray="3 3" />
 					<XAxis
 						dataKey="name"
 						tickLine={false}
 						style={{ fontSize: "10px", fill: COLOR_FONT }}
-					/>
+					>
+						<Label value="Month" offset={-5} position="bottom"/>
+					</XAxis>
 					<YAxis
-						yAxisId="left"
 						tickLine={false}
 						axisLine={false}
 						style={{ fontSize: "10px", fill: COLOR_FONT }}
-					/>
-					<YAxis
-						yAxisId="right"
-						orientation="right"
-						tickLine={false}
-						axisLine={false}
-						style={{ fontSize: "10px", fill: COLOR_FONT }}
-					/>
+					></YAxis>
 					<Tooltip />
-					<Legend
-						height={20}
-						wrapperStyle={{
-							margin: "0 0 10px 0",
-						}}
-					/>
+					<Legend verticalAlign="top" />
 					<Line
 						yAxisId="left"
 						type="monotone"
