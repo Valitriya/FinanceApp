@@ -43,12 +43,12 @@ const Predictions = () => {
 			</FlexBetween>
 			<ResponsiveContainer width="100%" height="100%">
 				<LineChart
-					data={}
+					data={formattedData}
 					margin={{
 						top: 20,
-						right: 5,
-						left: -5,
-						bottom: 60,
+						right: 75,
+						left: 20,
+						bottom: 80,
 					}}
 				>
 					<CartesianGrid
