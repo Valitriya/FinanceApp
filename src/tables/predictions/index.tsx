@@ -58,13 +58,15 @@ const Predictions = () => {
 						tickLine={false}
 						style={{ fontSize: "10px", fill: COLOR_FONT }}
 					>
-						<Label value="Month" offset={-5} position="bottom"/>
+						<Label value="Month" offset={-5} position="insideBottom"/>
 					</XAxis>
 					<YAxis
 						tickLine={false}
 						axisLine={false}
 						style={{ fontSize: "10px", fill: COLOR_FONT }}
-					></YAxis>
+					>
+						<Label value="Revenue in USD" angle={-90}offset={-5} position="insideLeft"/>
+					</YAxis>
 					<Tooltip />
 					<Legend verticalAlign="top" />
 					<Line
