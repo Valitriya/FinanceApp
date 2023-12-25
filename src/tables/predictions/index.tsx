@@ -59,22 +59,28 @@ const Predictions = () => {
 						tickLine={false}
 						style={{ fontSize: "10px", fill: COLOR_FONT }}
 					>
-						<Label value="Month" offset={-5} position="insideBottom"/>
+						<Label value="Month" offset={-5} position="insideBottom" />
 					</XAxis>
 					<YAxis
 						domain={MONTHLY_DATA_DOMAIN}
-						axisLine={{strokeWidth: "0"}}
+						axisLine={{ strokeWidth: "0" }}
 						tickFormatter={(v) => `$${v}`}
 					>
-						<Label value="Revenue in USD" angle={-90}offset={-5} position="insideLeft"/>
+						<Label
+							value="Revenue in USD"
+							angle={-90}
+							offset={-5}
+							position="insideLeft"
+						/>
 					</YAxis>
 					<Tooltip />
 					<Legend verticalAlign="top" />
 					<Line
-						yAxisId="left"
 						type="monotone"
-						dataKey="profit"
-						stroke={palette.tertiary[500]}
+						dataKey="Actual Revenue"
+						stroke={palette.primary.main}
+						strokeWidth={0}
+						dot={{strokeWidth: 5}}
 					/>
 					<Line
 						yAxisId="right"
