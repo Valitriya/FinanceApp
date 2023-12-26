@@ -4,6 +4,7 @@ import { Box, Button, Typography, useTheme } from "@mui/material";
 import { Label } from "@mui/icons-material";
 import DashboardBox from "@/components/DashboardBox";
 import FlexBetween from "@/components/FlexBetween";
+import { DataPoint } from "regression";
 import {
 	ResponsiveContainer,
 	CartesianGrid,
@@ -22,6 +23,11 @@ const Predictions = () => {
 
 	const COLOR_FONT = palette.grey[800];
 	const MONTHLY_DATA_DOMAIN = [12000, 26000];
+
+	const formattedData = useMemo(() => {
+		if (!kpiData) return [];
+		const monthData = kpiData[0].monthlyData;
+	}, [kpiData]);
 	return (
 		<DashboardBox width="100%" height="100%" p="1rem" overflow="hidden">
 			<FlexBetween m="1rem 2.5rem" gap="0.3rem">
