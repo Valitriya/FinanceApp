@@ -4,7 +4,7 @@ import { Box, Button, Typography, useTheme } from "@mui/material";
 import { Label } from "@mui/icons-material";
 import DashboardBox from "@/components/DashboardBox";
 import FlexBetween from "@/components/FlexBetween";
-import { DataPoint } from "regression";
+import regression, { DataPoint } from "regression";
 import {
 	ResponsiveContainer,
 	CartesianGrid,
@@ -28,11 +28,12 @@ const Predictions = () => {
 		if (!kpiData) return [];
 		const monthData = kpiData[0].monthlyData;
 
-		const formatted: Array<DataPoint> = monthData.map(
+		const formatted = monthData.map(
 			({ month, revenue, expenses }, i: number) => {
 				return [i, revenue];
 			}
 		);
+		const regressionLine = regression.linear(formatted);
 	}, [kpiData]);
 	return (
 		<DashboardBox width="100%" height="100%" p="1rem" overflow="hidden">
