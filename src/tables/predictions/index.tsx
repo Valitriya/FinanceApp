@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useGetKpisQuery } from "@/state/api";
 import { Box, Button, Typography, useTheme } from "@mui/material";
 import { Label } from "@mui/icons-material";
@@ -28,12 +28,21 @@ const Predictions = () => {
 		if (!kpiData) return [];
 		const monthData = kpiData[0].monthlyData;
 
-		const formatted = monthData.map(
-			({ month, revenue, expenses }, i: number) => {
+		const formatted: Array<DataPoint> = monthData.map(
+			({ revenue }, i: number) => {
 				return [i, revenue];
 			}
 		);
 		const regressionLine = regression.linear(formatted);
+
+		return monthData.map(({ month, revenue }, i: number) => {
+			return {
+				name: month,
+				"Actual Revenue": revenue,
+				"Regression Line": regressionLine.points[i][1],
+				"Predicted Revenue": regressionLine.predict(i + 12)[1],
+			};
+		});
 	}, [kpiData]);
 	return (
 		<DashboardBox width="100%" height="100%" p="1rem" overflow="hidden">
