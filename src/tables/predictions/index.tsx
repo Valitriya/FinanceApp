@@ -27,6 +27,12 @@ const Predictions = () => {
 	const formattedData = useMemo(() => {
 		if (!kpiData) return [];
 		const monthData = kpiData[0].monthlyData;
+
+		const formatted: Array<DataPoint> = monthData.map(
+			({ month, revenue, expenses }, i: number) => {
+				return [i, revenue];
+			}
+		);
 	}, [kpiData]);
 	return (
 		<DashboardBox width="100%" height="100%" p="1rem" overflow="hidden">
