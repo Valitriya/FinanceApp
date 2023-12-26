@@ -80,7 +80,7 @@ const Predictions = () => {
 						dataKey="Actual Revenue"
 						stroke={palette.primary.main}
 						strokeWidth={0}
-						dot={{strokeWidth: 5}}
+						dot={{ strokeWidth: 5 }}
 					/>
 					<Line
 						type="monotone"
@@ -88,6 +88,13 @@ const Predictions = () => {
 						stroke={palette.tertiary[500]}
 						dot={false}
 					/>
+					{isPredictions && (
+						<Line
+							type="monotone"
+							dataKey="Predicted Revenue"
+							stroke={palette.secondary[500]}
+						/>
+					)}
 				</LineChart>
 			</ResponsiveContainer>
 		</DashboardBox>
