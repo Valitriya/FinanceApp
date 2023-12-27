@@ -1,13 +1,7 @@
 import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useTheme } from "@mui/material";
-
-interface NavigationItemProps {
-	to: string;
-	label: string;
-	selected: string;
-	onClick: (label: string) => void;
-}
+import {NavigationItemProps} from "@/state/types";
 
 const NavigationItem: React.FC<NavigationItemProps> = ({
 	to,

@@ -1,3 +1,9 @@
+export interface NavigationItemProps {
+	to: string;
+	label: string;
+	selected: string;
+	onClick: (label: string) => void;
+}
 export interface ExpansesByCategory {
 	salaries: number;
 	supplies: number;
