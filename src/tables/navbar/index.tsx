@@ -23,7 +23,7 @@ const Navbar = () => {
 					onClick={setSelected}
 				></NavigationItem>
 				<NavigationItem
-					to="/"
+					to="/predictions"
 					label="Predictions"
 					selected={selected}
 					onClick={setSelected}
