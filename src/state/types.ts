@@ -1,9 +1,15 @@
+import { Theme } from '@mui/material/styles';
+
 export interface NavigationItemProps {
 	to: string;
 	label: string;
 	selected: string;
 	onClick: (label: string) => void;
 }
+export interface StyledLinkProps {
+	selected: boolean;
+	theme: Theme;
+  }
 export interface ExpansesByCategory {
 	salaries: number;
 	supplies: number;
