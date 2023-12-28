@@ -1,6 +1,14 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { GetKpisResponse, GetProductsResponse, GetTransactionsResponse } from "./types";
 
+const createQuery = (endpoint, providesTags, ttl) => ({
+	query: () => endpoint,
+	providesTags: [providesTags],
+	casheOptions: {ttl},
+	onError: (error: Error) => {
+		console.error(`Error fetching ${providesTags}:`, error)
+	}
+});
 export const api = createApi({
 	baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BASE_URL }),
 	reducerPath: "main",
