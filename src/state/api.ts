@@ -1,13 +1,18 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { GetKpisResponse, GetProductsResponse, GetTransactionsResponse } from "./types";
+import {
+	GetKpisResponse,
+	GetProductsResponse,
+	GetTransactionsResponse,
+	CustomQuery,
+} from "./types";
 
-const createQuery = (endpoint, providesTags, ttl) => ({
+const createQuery = ({ endpoint, providesTags, ttl }: CustomQuery) => ({
 	query: () => endpoint,
 	providesTags: [providesTags],
-	casheOptions: {ttl},
+	casheOptions: { ttl },
 	onError: (error: Error) => {
-		console.error(`Error fetching ${providesTags}:`, error)
-	}
+		console.error(`Error fetching ${providesTags}:`, error);
+	},
 });
 export const api = createApi({
 	baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BASE_URL }),
@@ -29,4 +34,5 @@ export const api = createApi({
 	}),
 });
 
-export const { useGetKpisQuery, useGetProductsQuery, useGetTransactionsQuery } = api;
+export const { useGetKpisQuery, useGetProductsQuery, useGetTransactionsQuery } =
+	api;

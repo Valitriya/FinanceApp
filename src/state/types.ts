@@ -1,4 +1,4 @@
-import { Theme } from '@mui/material/styles';
+import { Theme } from "@mui/material/styles";
 
 export interface NavigationItemProps {
 	to: string;
@@ -9,7 +9,12 @@ export interface NavigationItemProps {
 export interface StyledLinkProps {
 	selected: boolean;
 	theme: Theme;
-  }
+}
+export interface CustomQuery {
+	endpoint: string;
+	providesTags: string[];
+	ttl: number;
+}
 export interface ExpansesByCategory {
 	salaries: number;
 	supplies: number;
@@ -69,4 +74,3 @@ export interface GetTransactionsResponse {
 	createdAt: string;
 	updatedAt: string;
 }
-
