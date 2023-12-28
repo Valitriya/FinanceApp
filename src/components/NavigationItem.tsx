@@ -1,35 +1,23 @@
-import { Box } from "@mui/material";
-import { Link } from "react-router-dom";
-import { useTheme } from "@mui/material";
+import StyledLink from "@/tables/navbar/styledLink";
+import { NavigationItemProps } from "@/state/types";
+import { Theme } from "@mui/material/styles";
 
-interface NavigationItemProps {
-	to: string;
-	label: string;
-	selected: string;
-	onClick: (label: string) => void;
-}
-
-const NavigationItem: React.FC<NavigationItemProps> = ({
+const NavigationItem: React.FC<NavigationItemProps & { theme: Theme }> = ({
 	to,
 	label,
 	selected,
 	onClick,
+	theme,
 }) => {
-	const { palette } = useTheme();
-
 	return (
-		<Box sx={{ "&:hover": { color: palette.primary[100] } }}>
-			<Link
-				to={to}
-				onClick={() => onClick(label)}
-				style={{
-					color: selected === label ? "inherit" : palette.grey[700],
-					textDecoration: "inherit",
-				}}
-			>
-				{label}
-			</Link>
-		</Box>
+		<StyledLink
+			to={to}
+			selected={selected === label}
+			theme={theme}
+			onClick={() => onClick(label)}
+		>
+			{label}
+		</StyledLink>
 	);
 };
 
